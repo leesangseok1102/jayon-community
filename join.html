@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>참여하기 — 자연돌봄공동체</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="자연돌봄공동체">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <style>
+    .page-hero { background: linear-gradient(135deg, #1a3a2a 0%, var(--green-deep) 100%); padding: 140px 0 80px; color: var(--white); }
+    .tab-bar { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 56px; overflow-x: auto; }
+    .tab-btn { padding: 16px 32px; font-size: 15px; font-weight: 500; color: var(--text-mid); background: none; border: none; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s; }
+    .tab-btn.active { color: var(--green-deep); border-bottom-color: var(--green-deep); font-weight: 700; }
+    .tab-btn:hover { color: var(--green-deep); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .step-list { display: flex; flex-direction: column; gap: 0; margin: 40px 0; }
+    .step-item { display: flex; gap: 24px; position: relative; padding-bottom: 36px; }
+    .step-item:last-child { padding-bottom: 0; }
+    .step-item:not(:last-child)::before { content: ''; position: absolute; left: 20px; top: 44px; bottom: 0; width: 2px; background: var(--green-pale); }
+    .step-num { width: 40px; height: 40px; background: var(--green-deep); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; flex-shrink: 0; z-index: 1; }
+    .step-body h3 { font-size: 18px; color: var(--green-deep); margin-bottom: 8px; }
+    .step-body p { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+    .info-box { background: var(--green-pale); border-radius: 12px; padding: 28px 32px; margin: 32px 0; border-left: 4px solid var(--green-mid); }
+    .info-box h4 { font-size: 16px; color: var(--green-deep); margin-bottom: 12px; }
+    .info-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .info-box ul li { font-size: 14px; color: var(--text-mid); padding-left: 16px; position: relative; }
+    .info-box ul li::before { content: '·'; position: absolute; left: 0; color: var(--green-mid); font-weight: 700; }
+    .type-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; }
+    .type-card { background: var(--white); border-radius: 10px; padding: 24px; border: 2px solid var(--border); }
+    .type-card.featured { border-color: var(--green-mid); }
+    .type-card h4 { font-size: 16px; color: var(--green-deep); margin-bottom: 8px; }
+    .type-card .price { font-size: 22px; font-weight: 700; color: var(--green-deep); margin: 8px 0; }
+    .type-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; font-size: 15px; font-weight: 500; color: var(--text-dark); gap: 16px; }
+    .faq-q .icon { font-size: 20px; transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a-inner { padding: 0 0 20px; font-size: 14px; color: var(--text-mid); line-height: 1.9; }
+    @media (max-width: 768px) { .type-cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-main">자연돌봄공동체</span>
+          <span class="nav-logo-sub">Nature Harmony Community</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="community.html">공동체 모델</a></li>
+        <li><a href="programs.html">프로그램·사업</a></li>
+        <li><a href="join.html" class="active">참여하기</a></li>
+        <li><a href="news.html">소식</a></li>
+        <li><a href="contact.html" class="nav-cta">문의하기</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--green-pale)">참여하기</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(30px,5vw,50px);font-weight:700;margin-bottom:16px;">함께 만들어 가는<br>새로운 대한민국</h1>
+    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.9;">조합원·지자체·기업 파트너 등 다양한 방법으로 참여할 수 있습니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="member" id="member">🙋 조합원 참여</button>
+      <button class="tab-btn" data-tab="local-gov" id="local-gov">🏛️ 지자체 파트너십</button>
+      <button class="tab-btn" data-tab="corporate" id="corporate">🏢 기업 ESG 파트너</button>
+      <button class="tab-btn" data-tab="faq">❓ 자주 묻는 질문</button>
+    </div>
+
+    <!-- 조합원 -->
+    <div class="tab-content active" id="tab-member">
+      <div class="intro-grid">
+        <div>
+          <div class="section-label">조합원 참여</div>
+          <h2 class="section-title">공동체의 주인이 되세요</h2>
+          <div class="divider"></div>
+          <p style="font-size:15px;color:var(--text-mid);line-height:1.9;margin-bottom:28px;">자연돌봄공동체는 조합원이 주인입니다. 출자금을 납입하면 의결권을 가진 정식 조합원이 됩니다. 모든 주요 결정은 1인 1표 원칙으로 이루어집니다.</p>
+          <div class="type-cards">
+            <div class="type-card featured">
+              <div style="font-size:12px;font-weight:700;color:var(--green-mid);letter-spacing:1px;margin-bottom:6px;">핵심세대 · 공동체의 엔진</div>
+              <h4>핵심 조합원</h4>
+              <div class="price">55~64세</div>
+              <p>금융·건축·교육·간호 등 30~40년 현업 전문성으로 공동체의 뼈대를 세우고 비즈니스를 리드. 출자금(1좌 10만원, 최소 10좌)이 향후 입주 보증금으로 전환.</p>
+            </div>
+            <div class="type-card">
+              <div style="font-size:12px;font-weight:700;color:var(--earth-mid);letter-spacing:1px;margin-bottom:6px;">파트너세대 · 지혜의 돛</div>
+              <h4>파트너 조합원</h4>
+              <div class="price">65~75세+</div>
+              <p>건강하고 참여 의지 높은 액티브 시니어. 아동 양육 지원·유기견 사회화·청년 멘토링을 이끄는 동반자. 12평형 독립주거동 입주.</p>
+            </div>
+            <div class="type-card">
+              <div style="font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:1px;margin-bottom:6px;">청년창업 · 미래세대</div>
+              <h4>청년 조합원</h4>
+              <div class="price">20~39세</div>
+              <p>스마트팜·신재생에너지 등 사회적기업 창업 기회. 핵심세대 멘토링·공간·초기 자금 지원. 지역 정착 및 일자리 창출.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--green-pale);border-radius:16px;padding:36px;">
+            <h3 style="font-size:20px;color:var(--green-deep);margin-bottom:24px;">📋 참여 절차</h3>
+            <div class="step-list">
+              <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <h3>문의 및 상담</h3>
+                  <p>이메일·전화로 문의하시면 담당자가 상담 일정을 안내드립니다.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <h3>설명회 참가</h3>
+                  <p>온·오프라인 설명회 참가 후 공동체 비전과 운영 방식을 확인합니다.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <h3>조합원 신청서 제출</h3>
+                  <p>신청서와 자기소개서 제출. 전문 역량·역할 희망 분야 기재.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <h3>출자금 납입</h3>
+                  <p>설립 후 최소 출자금 납입으로 정식 조합원 등록. (금액 추후 안내)</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">5</div>
+                <div class="step-body">
+                  <h3>역할 배정 & 활동 시작</h3>
+                  <p>전문 역량에 맞는 역할 배정 후 공동체 활동 시작.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:40px;">
+        <h4>⚠️ 현재 모집 현황</h4>
+        <ul>
+          <li>즉시 전입 장년 조합원: 8명 확보 (추가 3~5명 대기 중)</li>
+          <li>즉시 전입 청년 조합원: 4명 확보 (스마트팜·신재생에너지 창업팀)</li>
+          <li>즉시 전입 돌봄 노인: 5명 확보 (장년 조합원 부모)</li>
+          <li>전체 조합원 50명 이상 확보 완료 → 부지 확정 즉시 사협 설립 진행</li>
+          <li>추가 조합원 모집 중 — 부지 확정 전 사전 등록 환영</li>
+        </ul>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="contact.html" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">조합원 참여 문의하기</a>
+      </div>
+    </div>
+
+    <!-- 지자체 -->
+    <div class="tab-content" id="tab-local-gov">
+      <div class="intro-grid">
+        <div>
+          <div class="section-label">지자체 파트너십</div>
+          <h2 class="section-title">장소는 귀 지자체에서,<br>사람과 사업은 우리가</h2>
+          <div class="divider"></div>
+          <p style="font-size:15px;color:var(--text-mid);line-height:1.9;margin-bottom:28px;">귀 지자체는 인구소멸위험지역입니까? 자연돌봄공동체가 함께 극복해나갑니다. 폐교·유휴지를 제공해 주시면, 우리가 사람과 사업을 그 땅 위에 세웁니다.</p>
+          <div class="info-box">
+            <h4>🏚️ 우리가 요청하는 부지의 3요소</h4>
+            <ul>
+              <li><strong>① 폐교 부지</strong> — 건물 500㎡+ · 교지 3,000㎡+ (미활용 폐교 우선)</li>
+              <li><strong>② 인근 군유지·유휴지</strong> — 폐교 인접 농지·임야 장기임대 20년 이상</li>
+              <li><strong>③ 국·군 산림자원</strong> — 인접 국유림 또는 군유 임야 (산림치유 허용 조건)</li>
+            </ul>
+          </div>
+          <div class="info-box" style="background:var(--earth-pale);border-left-color:var(--earth-mid);margin-top:16px;">
+            <h4>✅ 지자체가 얻는 효과</h4>
+            <ul>
+              <li>즉시 전입 인구 20명+ (장년·청년·노인·아동)</li>
+              <li>폐교 활용 — 지역 예산 절감, 유휴 자산 가치 창출</li>
+              <li>지방소멸대응기금 활용 근거 마련</li>
+              <li>아동 그룹홈·노인 요양·산림치유 지역 서비스 제공</li>
+              <li>스마트팜·태양광 등 지역 일자리 창출</li>
+              <li>인구소멸 극복 선도 사례 — 국가 정책 모델로 확산</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--earth-pale);border-radius:16px;padding:36px;">
+            <h3 style="font-size:20px;color:var(--green-deep);margin-bottom:24px;">📋 협력 추진 절차</h3>
+            <div class="step-list">
+              <div class="step-item">
+                <div class="step-num" style="background:var(--earth-mid);">1</div>
+                <div class="step-body"><h3>제안서 검토</h3><p>지자체 공통 제안서 수령 후 내부 검토. 담당 부서: 인구정책과·지역개발과·복지정책과.</p></div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" style="background:var(--earth-mid);">2</div>
+                <div class="step-body"><h3>현장 실무 협의</h3><p>설립준비위원회 방문 또는 화상 협의. 부지 후보 공동 검토 및 활용 계획 논의.</p></div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" style="background:var(--earth-mid);">3</div>
+                <div class="step-body"><h3>MOU 체결</h3><p>지자체-자연돌봄공동체 간 협력 양해각서 체결. 부지 제공 조건·기간 확정.</p></div>
+              </div>
+              <div class="step-item">
+                <div class="step-num" style="background:var(--earth-mid);">4</div>
+                <div class="step-body"><h3>사협 설립 & 착공</h3><p>MOU 체결 후 사회적협동조합 공식 설립. 부지 확정 후 6개월 이내 착공 시작.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="contact.html" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">지자체 협력 제안서 요청</a>
+      </div>
+    </div>
+
+    <!-- 기업 -->
+    <div class="tab-content" id="tab-corporate">
+      <div class="intro-grid">
+        <div>
+          <div class="section-label">기업 ESG 파트너</div>
+          <h2 class="section-title">사회적 가치와<br>ESG를 동시에</h2>
+          <div class="divider"></div>
+          <p style="font-size:15px;color:var(--text-mid);line-height:1.9;margin-bottom:28px;">자연돌봄공동체와의 파트너십은 단순한 기부가 아닙니다. 측정 가능한 사회적 성과와 ESG 임팩트를 함께 만들어가는 전략적 협력입니다.</p>
+          <div class="type-cards">
+            <div class="type-card">
+              <div style="font-size:24px;margin-bottom:12px;">🤝</div>
+              <h4>스폰서십</h4>
+              <p>시설 건립·운영 후원. 공동체 내 기업 명칭 공간 명명권. ESG 보고서 기재 가능.</p>
+            </div>
+            <div class="type-card featured">
+              <div style="font-size:24px;margin-bottom:12px;">♻️</div>
+              <h4>탄소크레딧 구매</h4>
+              <p>스마트팜·태양광·산림의 탄소 감축량을 크레딧으로 구매. 기업 탄소중립 목표 달성에 활용.</p>
+            </div>
+            <div class="type-card">
+              <div style="font-size:24px;margin-bottom:12px;">👥</div>
+              <h4>임직원 봉사</h4>
+              <p>스마트팜·산림치유·반려동물 봉사 프로그램. 팀빌딩 + 사회공헌 동시 달성.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="background:linear-gradient(135deg, var(--green-deep), var(--green-mid));border-radius:16px;padding:40px;color:white;">
+            <h3 style="font-size:20px;margin-bottom:24px;">💼 파트너십 혜택</h3>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <span style="font-size:20px;">📊</span>
+                <div>
+                  <div style="font-weight:600;margin-bottom:4px;">ESG 성과 측정</div>
+                  <div style="font-size:13px;opacity:0.8;">사회적 가치 창출 금액(SVI), 탄소 감축량, 수혜 인원 등 정량 보고서 제공</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <span style="font-size:20px;">📢</span>
+                <div>
+                  <div style="font-weight:600;margin-bottom:4px;">홍보 연계</div>
+                  <div style="font-size:13px;opacity:0.8;">공동체 홈페이지·소식지·언론 보도에 파트너 기업 소개</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <span style="font-size:20px;">🏷️</span>
+                <div>
+                  <div style="font-weight:600;margin-bottom:4px;">명명권</div>
+                  <div style="font-size:13px;opacity:0.8;">후원 규모에 따라 건물·정원·프로그램 명명권 부여</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <span style="font-size:20px;">🌱</span>
+                <div>
+                  <div style="font-weight:600;margin-bottom:4px;">친환경 제품 납품</div>
+                  <div style="font-size:13px;opacity:0.8;">스마트팜 유기농 농산물·가공식품 임직원 복지몰 납품 연계</div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.2);">
+              <div style="font-size:13px;opacity:0.7;margin-bottom:8px;">현재 제안서 보유 기업</div>
+              <div style="font-size:15px;font-weight:600;">현대자동차그룹 · 키움증권그룹 외</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="contact.html" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">ESG 제안서 요청하기</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="tab-content" id="tab-faq">
+      <div class="section-label">자주 묻는 질문</div>
+      <h2 class="section-title">궁금한 점을 정리했습니다</h2>
+      <div class="divider"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">월 170만원에 뭐가 다 포함되나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">Type A 기준 월 170만원(ALL-IN)에는 식사 3끼(유기농 스마트팜 식재료), 세탁, 청소, 차량 4대 운행, 각종 프로그램 참여, 기본의료(간호사 상주), 유기견 공동 돌봄 프로그램, 스마트팜 체험·마을학교 참여가 모두 포함됩니다. 인근 강릉·춘천 실버타운(250~350만원) 대비 35% 이상 저렴합니다.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">출자금은 얼마이며, 돌려받을 수 있나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">출자금은 1좌 10만원이며 최소 10좌(100만원)부터 납입합니다. 출자금은 조합원 자격과 의결권의 기초가 됩니다. 조합 탈퇴 시 환급 원칙이며, 향후 입주 보증금(Type A 2,000만원)으로 자동 전환할 수도 있습니다. 출자금과 입주보증금은 별개 항목으로 구분됩니다. 돌봄코인은 1코인=1만원 기준으로 월 분담금에서 최대 70만원까지 차감됩니다.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">55~65세가 아니어도 참여할 수 있나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">네, 가능합니다. 청년 조합원(20~39세)은 스마트팜·신재생에너지 등 사회적기업 창업 기회를 갖습니다. 65세 이상 노인도 가족 동반 또는 독립 입주 조합원으로 참여 가능합니다. 단, 공동체의 핵심 운영 주체는 55~65세 장년층입니다.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">부지는 어디에 생기나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">2026년 파일럿은 강원도 평창군을 목표로 협의 중이며, 동시에 경기도(가평·포천·여주·연천), 충북(괴산), 전남(고흥) 등 다수 지자체와 병행 협의 중입니다. 부지가 확정되는 지역에서 가장 먼저 착공합니다.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">지금 조합원으로 등록하면 바로 이사해야 하나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">아닙니다. 현재는 사전 등록 단계로, 부지가 확정되고 사협 설립이 완료된 후 공식 출자금 납입과 역할 배정이 진행됩니다. 지금 사전 등록하시면 우선 안내와 설명회 초청을 받으실 수 있습니다.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">건강이 나빠지면 어떻게 되나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">공동체 안에서 Type A → Type B(경증 요양) → Type C(중증 케어)로 자연스럽게 전환됩니다. 외부 요양원으로 이전할 필요 없이 25~30년 함께한 사람들 곁에서 임종까지 생활하는 것이 자연돌봄공동체의 핵심 설계입니다. 장기요양보험 등급을 받으면 본인 부담이 오히려 낮아집니다.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">공동체가 재정적으로 어려워지면 어떻게 하나요?<span class="icon">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">스마트팜·태양광의 연 11억 자체 수익이 기본 안전망입니다. 입주자 공실률 변동에도 고정 수익이 운영을 지탱합니다. 10년 누적 잉여 95.8억이 쌓이면 2·3단지로 확장하여 리스크를 분산합니다. 보수적 시나리오(SMP 하락·공실 20%)를 가정해도 5년 내 흑자 전환이 가능한 구조입니다.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-logo-main">🌿 자연돌봄공동체</div><p class="footer-desc">세대통합형 자연돌봄공동체 사회적협동조합<br>Nature Harmony Community<br><br>☎ 010-2521-2030 &nbsp;|&nbsp; ✉ ssleents0922@gmail.com</p></div>
+      <div class="footer-col"><h4>공동체 안내</h4><ul><li><a href="about.html">소개</a></li><li><a href="community.html">공동체 모델</a></li></ul></div>
+      <div class="footer-col"><h4>사업·프로그램</h4><ul><li><a href="programs.html">프로그램</a></li></ul></div>
+      <div class="footer-col"><h4>참여·문의</h4><ul><li><a href="join.html">참여하기</a></li><li><a href="contact.html">문의</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 자연돌봄공동체 사회적협동조합 설립준비위원회.</span><span>파일럿 지역: 강원도 평창군</span></div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // 탭
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // URL 해시로 탭 이동
+  const hash = window.location.hash.replace('#','');
+  if(hash) {
+    const btn = document.querySelector(`[data-tab="${hash}"]`);
+    if(btn) btn.click();
+  }
+
+  // FAQ
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
+

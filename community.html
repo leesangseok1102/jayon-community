@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공동체 모델 — 자연돌봄공동체</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="자연돌봄공동체">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #1a3a2a 0%, var(--green-deep) 100%);
+      padding: 140px 0 80px;
+      color: var(--white);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+    }
+    .compare-table th {
+      background: var(--green-deep);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .compare-table th:first-child { width: 20%; }
+    .compare-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      vertical-align: top;
+      line-height: 1.7;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--cream); }
+    .compare-table .col-bad { color: #c0392b; }
+    .compare-table .col-good { color: var(--green-deep); font-weight: 500; }
+    .coin-box {
+      background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+      color: var(--white);
+      border-radius: 16px;
+      padding: 48px;
+      margin-top: 48px;
+    }
+    .coin-flow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .coin-step {
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 20px 24px;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+    }
+    .coin-step .num { font-size: 28px; font-weight: 700; color: var(--green-pale); }
+    .coin-step .label { font-size: 14px; color: rgba(255,255,255,0.85); margin-top: 6px; }
+    .coin-arrow { font-size: 24px; color: var(--green-pale); flex-shrink: 0; }
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .phase-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+    .phase-header {
+      padding: 24px;
+      color: white;
+    }
+    .phase-header.a { background: var(--green-deep); }
+    .phase-header.b { background: var(--earth-mid); }
+    .phase-header.c { background: #6b4c8a; }
+    .phase-header .type { font-size: 12px; font-weight: 700; letter-spacing: 2px; opacity: 0.7; }
+    .phase-header h3 { font-size: 22px; margin: 6px 0; }
+    .phase-header .price { font-size: 28px; font-weight: 700; }
+    .phase-header .price-sub { font-size: 12px; opacity: 0.8; }
+    .phase-body {
+      background: var(--white);
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+    .phase-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .phase-body ul li { font-size: 14px; color: var(--text-mid); padding-left: 20px; position: relative; line-height: 1.7; }
+    .phase-body ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green-mid); font-weight: 700; }
+    @media (max-width: 768px) {
+      .phase-grid { grid-template-columns: 1fr; }
+      .coin-flow { flex-direction: column; }
+      .coin-arrow { transform: rotate(90deg); }
+    }
+    @media (max-width: 640px) {
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-main">자연돌봄공동체</span>
+          <span class="nav-logo-sub">Nature Harmony Community</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="community.html" class="active">공동체 모델</a></li>
+        <li><a href="programs.html">프로그램·사업</a></li>
+        <li><a href="join.html">참여하기</a></li>
+        <li><a href="news.html">소식</a></li>
+        <li><a href="contact.html" class="nav-cta">문의하기</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--green-pale)">공동체 모델</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(30px,5vw,50px);font-weight:700;margin-bottom:16px;">
+      퇴직 후 하강이 아닌,<br>상승하는 삶의 구조
+    </h1>
+    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.9;">
+      스스로 노후 복지를 적립하는 자립형 순환 모델. 지자체 예산을 최소화하는 새로운 대안입니다.
+    </p>
+  </div>
+</section>
+
+<!-- 기존 vs 자연돌봄 비교 -->
+<section class="section">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">왜 달라야 하는가</div>
+      <h2 class="section-title">기존 모델과의 근본적인 차이</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table fade-in">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>기존 모델 (퇴직 후 하강 경로)</th>
+            <th>자연돌봄 모델 (상승 경로)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>사회적 위치</strong></td>
+            <td class="col-bad">청년도 노인도 아닌 정책 사각지대. 지원도 활용도 없는 무역할 공백기</td>
+            <td class="col-good">공동체의 핵심 운영 주체. 직원 겸 조합원 — 기여자로 재정의</td>
+          </tr>
+          <tr>
+            <td><strong>퇴직 후 경로</strong></td>
+            <td class="col-bad">자유 → 심심함 → 고립 → 건강 악화 → 무력감 → 요양원</td>
+            <td class="col-good">공동체 참여 → 봉사·생산·돌봄 → 존엄한 노년까지 상승</td>
+          </tr>
+          <tr>
+            <td><strong>보유 자산 활용</strong></td>
+            <td class="col-bad">30~40년 경험·기술·인간관계가 방치됨</td>
+            <td class="col-good">지역사회 돌봄 인프라로 전환. 청년 멘토·아동 교육·노인 돌봄에 기여</td>
+          </tr>
+          <tr>
+            <td><strong>노후 불안</strong></td>
+            <td class="col-bad">불확실한 노년. 요양원 입소 = 사회적 역할 종료</td>
+            <td class="col-good">공동체 안에서 자신의 노후를 직접 설계. 임종까지 익숙한 사람들 곁에서</td>
+          </tr>
+          <tr>
+            <td><strong>재정 구조</strong></td>
+            <td class="col-bad">국민연금·퇴직금 소진. 외부 보조금 의존</td>
+            <td class="col-good">출자금·돌봄코인 적립 → 입주비 자동 전환. 스마트팜·태양광 자체 수익</td>
+          </tr>
+          <tr>
+            <td><strong>지역사회 기여</strong></td>
+            <td class="col-bad">귀촌 소비자 역할에 그침</td>
+            <td class="col-good">인구소멸 지역 활력 창출. 폐교 재생, 아동 양육, 산림 관리까지 담당</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 3단계 생애주기 -->
+<section class="section section-green">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">생애주기 연계 모델</div>
+      <h2 class="section-title">3단계 생애주기 프로세스</h2>
+      <div class="divider divider-center" style="background:var(--green-pale)"></div>
+      <p class="section-subtitle">
+        55세에 참여해서 임종까지 — 하나의 공동체 안에서 모든 생애 단계를 완성합니다.
+      </p>
+    </div>
+    <div class="lifecycle-grid">
+      <div class="lifecycle-card fade-in stagger-1">
+        <div class="lifecycle-step">1단계 · 진입기</div>
+        <h3>핵심세대 — 공동체의 엔진</h3>
+        <div class="lifecycle-age">만 55~64세 · 출퇴근 또는 상주</div>
+        <p>30~40년 전문 역량을 공동체 자산으로 활용합니다. 출자금(1좌 10만원, 최소 10좌)을 납입하면 향후 입주 보증금으로 자동 전환됩니다. 지자체 신중년 일자리 보조금도 연계됩니다.</p>
+        <div class="lifecycle-tags">
+          <span class="lifecycle-tag">출자금 납입</span>
+          <span class="lifecycle-tag">돌봄코인 적립</span>
+          <span class="lifecycle-tag">현금 급여</span>
+          <span class="lifecycle-tag">신중년 보조금</span>
+        </div>
+      </div>
+      <div class="lifecycle-card fade-in stagger-2">
+        <div class="lifecycle-step">2단계 · 전환기</div>
+        <h3>파트너세대 — 지혜의 돛</h3>
+        <div class="lifecycle-age">만 65~75세+ · 12평형 독립주거동 입주</div>
+        <p>적립한 출자금·코인으로 입주 보증금을 충당합니다. 월 170만원 ALL-IN으로 식사 3끼·세탁·청소·차량·프로그램·기본의료가 포함됩니다. 아동 양육 지원·유기견 사회화·청년 멘토링 역할을 이어갑니다.</p>
+        <div class="lifecycle-tags">
+          <span class="lifecycle-tag">월 170만원 ALL-IN</span>
+          <span class="lifecycle-tag">일 3시간 유급</span>
+          <span class="lifecycle-tag">독립 주거</span>
+          <span class="lifecycle-tag">국민연금 연계</span>
+        </div>
+      </div>
+      <div class="lifecycle-card fade-in stagger-3">
+        <div class="lifecycle-step">3단계 · 돌봄기</div>
+        <h3>돌봄 수혜자</h3>
+        <div class="lifecycle-age">만 75세 이후 · 케어동 이전</div>
+        <p>외부 요양원이 아닌, 25~30년 함께한 사람들 곁에서 돌봄을 받습니다. 누적한 돌봄코인으로 요양비를 충당하고, 장기요양보험과 연계하여 사망 시까지 공동체 안에서 생활합니다.</p>
+        <div class="lifecycle-tags">
+          <span class="lifecycle-tag">코인 소진</span>
+          <span class="lifecycle-tag">장기요양 연계</span>
+          <span class="lifecycle-tag">케어동 입주</span>
+          <span class="lifecycle-tag">존엄한 임종</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 입주 타입 -->
+<section class="section">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">입주 유형</div>
+      <h2 class="section-title">3가지 입주 타입</h2>
+      <div class="divider divider-center"></div>
+      <p class="section-subtitle">
+        건강 상태와 필요에 따라 선택할 수 있는 3가지 입주 유형을 제공합니다.
+        공동체 안에서 자연스럽게 유형 간 전환이 이루어집니다.
+      </p>
+    </div>
+    <div class="phase-grid">
+      <div class="phase-card fade-in stagger-1">
+        <div class="phase-header a">
+          <div class="type">TYPE A</div>
+          <h3>독립 생활형</h3>
+          <div class="price">월 170만원</div>
+          <div class="price-sub">보증금 2,000만원 + 월 170만원 ALL-IN</div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>식사 3끼 제공 (유기농 스마트팜 식재료)</li>
+            <li>세탁·청소·차량 서비스 포함</li>
+            <li>프로그램·커뮤니티 활동 참여</li>
+            <li>기본의료 (간호사 상주)</li>
+            <li>유기견 공동 돌봄 프로그램</li>
+            <li>스마트팜 체험·마을학교 참여</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-card fade-in stagger-2">
+        <div class="phase-header b">
+          <div class="type">TYPE B</div>
+          <h3>경증 요양형</h3>
+          <div class="price">월 90만원</div>
+          <div class="price-sub">장기요양급여(4~5등급) + 본인부담 90만원</div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>Type A 서비스 전체 포함</li>
+            <li>장기요양보험 4~5등급 수급자</li>
+            <li>일상 생활 지원 서비스</li>
+            <li>요양보호사 상주</li>
+            <li>건강 모니터링 강화</li>
+            <li>공단 급여분 공동체 직수령</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-card fade-in stagger-3">
+        <div class="phase-header c">
+          <div class="type">TYPE C</div>
+          <h3>중증 케어형</h3>
+          <div class="price">월 60만원</div>
+          <div class="price-sub">장기요양급여(1~3등급) + 본인부담 60만원</div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>24시간 전문 요양 서비스</li>
+            <li>장기요양보험 1~3등급 수급자</li>
+            <li>케어동 전용 병실 입주</li>
+            <li>전문 간병인 배치</li>
+            <li>가족 면회·참여 프로그램</li>
+            <li>임종 케어 프로그램 제공</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-light);">
+      ※ 장기요양보험 등급 인정률 약 82%(공단 통계 기준), v9 재무모델은 보수적 80% 수급률 적용
+    </p>
+  </div>
+</section>
+
+<!-- 돌봄코인 시스템 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">돌봄코인 시스템</div>
+      <h2 class="section-title">기여가 노후로 돌아오는 구조</h2>
+      <div class="divider divider-center"></div>
+      <p class="section-subtitle">
+        돌봄코인은 공동체 내 봉사·돌봄 활동을 화폐로 전환하는 내부 시스템입니다.
+        적립한 코인은 자신이 돌봄이 필요해질 때 이용료로 차감됩니다.
+      </p>
+    </div>
+    <div class="coin-box fade-in">
+      <h3 style="font-size:22px;margin-bottom:8px;">돌봄코인 순환 구조</h3>
+      <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:24px;">월 최대 70만원 이용료 차감 · 코인 공동체 존속 기간 무기한 이월</p>
+      <div class="coin-flow">
+        <div class="coin-step">
+          <div class="num">활동</div>
+          <div class="label">봉사·돌봄·교육<br>공동체 기여 활동</div>
+        </div>
+        <div class="coin-arrow">→</div>
+        <div class="coin-step">
+          <div class="num">적립</div>
+          <div class="label">시간당 코인 적립<br>무기한 이월 보장</div>
+        </div>
+        <div class="coin-arrow">→</div>
+        <div class="coin-step">
+          <div class="num">차감</div>
+          <div class="label">노년 돌봄 이용 시<br>월 최대 70만원 차감</div>
+        </div>
+        <div class="coin-arrow">→</div>
+        <div class="coin-step">
+          <div class="num">환원</div>
+          <div class="label">사망 후 잔여 코인<br>차세대 재원으로 환원</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 재무 개요 -->
+<section class="section">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">재무 모델 개요</div>
+      <h2 class="section-title">10년 자립 달성 구조</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;" class="fade-in finance-grid">
+      <div>
+        <h3 style="font-size:18px;color:var(--green-deep);margin-bottom:20px;">💰 수입 구조</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--white);border-radius:8px;border:1px solid var(--border);">
+            <span style="font-size:14px;color:var(--text-mid);">🌱 스마트팜 매출</span>
+            <strong style="color:var(--green-deep);">연 2.5억</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--white);border-radius:8px;border:1px solid var(--border);">
+            <span style="font-size:14px;color:var(--text-mid);">☀️ 태양광 발전 수익</span>
+            <strong style="color:var(--green-deep);">연 3.6억</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--white);border-radius:8px;border:1px solid var(--border);">
+            <span style="font-size:14px;color:var(--text-mid);">🏠 입주비 (Type A~C)</span>
+            <strong style="color:var(--green-deep);">월 1.2~1.8억</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--white);border-radius:8px;border:1px solid var(--border);">
+            <span style="font-size:14px;color:var(--text-mid);">🏥 장기요양급여 (공단)</span>
+            <strong style="color:var(--green-deep);">월 0.5~1억</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--white);border-radius:8px;border:1px solid var(--border);">
+            <span style="font-size:14px;color:var(--text-mid);">🐕 반려동물센터 매출</span>
+            <strong style="color:var(--green-deep);">연 1.2억</strong>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:18px;color:var(--green-deep);margin-bottom:20px;">📊 핵심 재무 지표</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="padding:20px;background:var(--green-pale);border-radius:8px;">
+            <div style="font-size:13px;color:var(--green-mid);margin-bottom:4px;">총 사업비</div>
+            <div style="font-size:24px;font-weight:700;color:var(--green-deep);">60억원</div>
+            <div style="font-size:12px;color:var(--text-mid);">민간 3억 + 공공 57억 (레버리지 19배)</div>
+          </div>
+          <div style="padding:20px;background:var(--earth-pale);border-radius:8px;">
+            <div style="font-size:13px;color:var(--earth-mid);margin-bottom:4px;">연간 자체 수익</div>
+            <div style="font-size:24px;font-weight:700;color:var(--earth-dark);">11억원+</div>
+            <div style="font-size:12px;color:var(--text-mid);">스마트팜 + 태양광 기준 (에너지·식재료 완전 자립)</div>
+          </div>
+          <div style="padding:20px;background:var(--green-pale);border-radius:8px;">
+            <div style="font-size:13px;color:var(--green-mid);margin-bottom:4px;">10년 누적 잉여금</div>
+            <div style="font-size:24px;font-weight:700;color:var(--green-deep);">95.8억원</div>
+            <div style="font-size:12px;color:var(--text-mid);">2·3단지 자립 착공 재원으로 활용</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 768px) { .finance-grid { grid-template-columns: 1fr !important; } }
+    </style>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">🌿 자연돌봄공동체</div>
+        <p class="footer-desc">세대통합형 자연돌봄공동체 사회적협동조합<br>Nature Harmony Community<br><br>☎ 010-2521-2030 &nbsp;|&nbsp; ✉ ssleents0922@gmail.com</p>
+      </div>
+      <div class="footer-col"><h4>공동체 안내</h4><ul><li><a href="about.html">소개</a></li><li><a href="community.html">공동체 모델</a></li></ul></div>
+      <div class="footer-col"><h4>사업·프로그램</h4><ul><li><a href="programs.html">프로그램</a></li></ul></div>
+      <div class="footer-col"><h4>참여·문의</h4><ul><li><a href="join.html">참여하기</a></li><li><a href="contact.html">문의</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 자연돌봄공동체 사회적협동조합 설립준비위원회.</span>
+      <span>파일럿 지역: 강원도 평창군</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+

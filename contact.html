@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의하기 — 자연돌봄공동체</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="자연돌봄공동체">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <style>
+    .page-hero { background: linear-gradient(135deg, #1a3a2a 0%, var(--green-deep) 100%); padding: 140px 0 80px; color: var(--white); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--green-deep); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 13px 16px; border: 2px solid var(--border); border-radius: 6px;
+      font-size: 15px; font-family: 'Noto Sans KR', sans-serif; color: var(--text-dark);
+      background: var(--white); transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green-mid); }
+    .form-group textarea { height: 140px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-submit { width: 100%; padding: 16px; background: var(--green-deep); color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s; }
+    .form-submit:hover { background: var(--green-mid); }
+    .form-notice { font-size: 12px; color: var(--text-light); margin-top: 10px; }
+    .contact-cards { display: flex; flex-direction: column; gap: 20px; margin-bottom: 32px; }
+    .contact-card { background: var(--white); border-radius: 12px; padding: 24px 28px; border: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start; }
+    .contact-card-icon { width: 48px; height: 48px; background: var(--green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .contact-card-body strong { display: block; font-size: 14px; color: var(--green-deep); margin-bottom: 4px; }
+    .contact-card-body span { font-size: 15px; color: var(--text-dark); }
+    .contact-card-body small { display: block; font-size: 13px; color: var(--text-light); margin-top: 3px; }
+    .map-area { background: var(--green-pale); border-radius: 12px; height: 220px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; border: 2px dashed var(--green-light); }
+    .pilot-badge { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); color: white; border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; }
+    .success-msg { display: none; background: var(--green-pale); border: 2px solid var(--green-mid); border-radius: 10px; padding: 24px; text-align: center; margin-top: 20px; }
+    .success-msg .icon { font-size: 40px; margin-bottom: 10px; }
+    .success-msg h3 { color: var(--green-deep); margin-bottom: 8px; }
+    .success-msg p { font-size: 14px; color: var(--text-mid); }
+    @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-main">자연돌봄공동체</span>
+          <span class="nav-logo-sub">Nature Harmony Community</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="community.html">공동체 모델</a></li>
+        <li><a href="programs.html">프로그램·사업</a></li>
+        <li><a href="join.html">참여하기</a></li>
+        <li><a href="news.html">소식</a></li>
+        <li><a href="contact.html" class="active nav-cta">문의하기</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--green-pale)">문의하기</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(30px,5vw,50px);font-weight:700;margin-bottom:16px;">함께 이야기 나눠요</h1>
+    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.9;">조합원 참여, 지자체 협력, 기업 파트너십 등 어떤 형태로든 문의 주시면 성심껏 답변드립니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="form-grid">
+
+      <!-- 연락처 정보 -->
+      <div class="fade-in">
+        <div class="section-label">연락처</div>
+        <h2 class="section-title" style="font-size:28px;">언제든지 연락 주세요</h2>
+        <div class="divider"></div>
+
+        <div class="pilot-badge">
+          <div style="font-size:12px;font-weight:700;letter-spacing:2px;opacity:0.7;margin-bottom:6px;">파일럿 추진 지역</div>
+          <div style="font-size:18px;font-weight:700;">🏔️ 강원도 평창군</div>
+          <div style="font-size:13px;opacity:0.8;margin-top:4px;">협의 중 — 2026년 착수 목표</div>
+        </div>
+
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon">📞</div>
+            <div class="contact-card-body">
+              <strong>전화</strong>
+              <span>010-2521-2030</span>
+              <small>설립준비위원장 이상석 직통</small>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">📧</div>
+            <div class="contact-card-body">
+              <strong>이메일</strong>
+              <span>ssleents0922@gmail.com</span>
+              <small>업무일 기준 24시간 내 회신</small>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">👤</div>
+            <div class="contact-card-body">
+              <strong>설립준비위원장</strong>
+              <span>이상석</span>
+              <small>자연돌봄공동체 사회적협동조합 설립준비위원회</small>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">🏛️</div>
+            <div class="contact-card-body">
+              <strong>법인 형태</strong>
+              <span>사회적협동조합 (설립 준비 중)</span>
+              <small>보건복지부 인가 예정</small>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--earth-pale);border-radius:12px;padding:24px;">
+          <h4 style="font-size:15px;color:var(--green-deep);margin-bottom:12px;">📍 오시는 길 안내</h4>
+          <div class="map-area">
+            <div style="font-size:40px;">🗺️</div>
+            <p style="font-size:14px;color:var(--green-mid);">부지 확정 후 정확한 주소가 안내됩니다</p>
+            <p style="font-size:13px;color:var(--text-light);">파일럿: 강원도 평창군 일대</p>
+          </div>
+          <p style="font-size:13px;color:var(--text-mid);margin-top:12px;line-height:1.7;">
+            현재 사전 방문 상담을 진행하고 있습니다.<br>
+            부지 확정 후 방문 일정을 별도 안내드릴 예정입니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 문의 폼 -->
+      <div class="fade-in stagger-2">
+        <div style="background:var(--white);border-radius:16px;padding:40px;border:1px solid var(--border);box-shadow:0 4px 24px var(--shadow);">
+          <h3 style="font-size:22px;color:var(--green-deep);margin-bottom:24px;">✉️ 문의 보내기</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">이름 *</label>
+                <input type="text" id="name" placeholder="홍길동" required>
+              </div>
+              <div class="form-group">
+                <label for="age">연령대</label>
+                <select id="age">
+                  <option value="">선택해주세요</option>
+                  <option>20대</option>
+                  <option>30대</option>
+                  <option>40대</option>
+                  <option>50대 (55세 미만)</option>
+                  <option>55~65세 (장년)</option>
+                  <option>65세 이상</option>
+                  <option>기관/단체</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">이메일 *</label>
+                <input type="email" id="email" placeholder="example@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">연락처</label>
+                <input type="tel" id="phone" placeholder="010-0000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="purpose">문의 유형 *</label>
+              <select id="purpose" required>
+                <option value="">선택해주세요</option>
+                <option>조합원 참여 문의</option>
+                <option>지자체 파트너십 문의</option>
+                <option>기업 ESG 파트너십 문의</option>
+                <option>입주 문의 (Type A/B/C)</option>
+                <option>언론 취재 요청</option>
+                <option>설명회 참가 신청</option>
+                <option>소식 구독 신청</option>
+                <option>기타 문의</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="expertise">전문 분야 / 소속 (선택)</label>
+              <input type="text" id="expertise" placeholder="예: 건축, 의료, 교육, 금융, ○○기업 담당자 등">
+            </div>
+            <div class="form-group">
+              <label for="message">문의 내용 *</label>
+              <textarea id="message" placeholder="궁금하신 점이나 참여 의향을 자유롭게 적어주세요." required></textarea>
+            </div>
+            <div class="form-group">
+              <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;">
+                <input type="checkbox" id="privacy" required style="width:auto;margin-top:3px;">
+                <span style="font-size:13px;color:var(--text-mid);">개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 이메일, 연락처 / 목적: 문의 답변 / 보유기간: 3년)</span>
+              </label>
+            </div>
+            <button type="submit" class="form-submit">문의 보내기 →</button>
+            <p class="form-notice">* 표시 항목은 필수 입력 사항입니다. 업무일 기준 24시간 내 답변드립니다.</p>
+          </form>
+          <div class="success-msg" id="successMsg">
+            <div class="icon">✅</div>
+            <h3>문의가 접수되었습니다!</h3>
+            <p>빠른 시일 내에 이메일로 답변드리겠습니다.<br>자연돌봄공동체에 관심 가져주셔서 감사합니다. 🌿</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 추가 채널 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">다양한 채널로 만나요</div>
+      <h2 class="section-title">설명회 & 자료 요청</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="join-grid" style="margin-top:40px;">
+      <div class="join-card fade-in stagger-1">
+        <div class="join-card-icon">📋</div>
+        <h3>종합 백서 요청</h3>
+        <p>자연돌봄공동체 종합 백서 v11을 PDF로 받아보세요. 비전·재무·거버넌스 전체 내용이 담겨 있습니다.</p>
+        <a href="contact.html" class="btn btn-outline">백서 요청하기</a>
+      </div>
+      <div class="join-card fade-in stagger-2">
+        <div class="join-card-icon">🎤</div>
+        <h3>온라인 설명회</h3>
+        <p>매월 정기 온라인 설명회를 개최합니다. 조합원 예비 참여자, 지자체 담당자 등 누구나 참가할 수 있습니다.</p>
+        <a href="contact.html" class="btn btn-outline">설명회 신청</a>
+      </div>
+      <div class="join-card fade-in stagger-3">
+        <div class="join-card-icon">🤝</div>
+        <h3>1:1 맞춤 상담</h3>
+        <p>조합원·지자체·기업 파트너 각각에 맞는 맞춤 상담을 제공합니다. 이메일 또는 화상으로 진행합니다.</p>
+        <a href="contact.html" class="btn btn-outline">상담 신청하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">🌿 자연돌봄공동체</div>
+        <p class="footer-desc">세대통합형 자연돌봄공동체 사회적협동조합<br>Nature Harmony Community<br><br>설립준비위원장: 이상석<br>☎ 010-2521-2030<br>✉ ssleents0922@gmail.com</p>
+      </div>
+      <div class="footer-col"><h4>공동체 안내</h4><ul><li><a href="about.html">소개</a></li><li><a href="community.html">공동체 모델</a></li><li><a href="about.html#charter">비전 선언문</a></li></ul></div>
+      <div class="footer-col"><h4>사업·프로그램</h4><ul><li><a href="programs.html#smartfarm">스마트팜</a></li><li><a href="programs.html#solar">태양광</a></li><li><a href="programs.html#forest">산림치유</a></li></ul></div>
+      <div class="footer-col"><h4>참여·문의</h4><ul><li><a href="join.html">조합원 참여</a></li><li><a href="join.html#local-gov">지자체</a></li><li><a href="join.html#corporate">기업 ESG</a></li><li><a href="contact.html">문의하기</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 자연돌봄공동체 사회적협동조합 설립준비위원회. All rights reserved.</span>
+      <span>파일럿 지역: 강원도 평창군</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    // 실제 이메일 연동 시 여기에 fetch/API 호출 추가
+  });
+</script>
+</body>
+</html>
+

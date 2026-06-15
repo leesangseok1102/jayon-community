@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소개 — 자연돌봄공동체</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="자연돌봄공동체">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      padding: 140px 0 80px;
+      color: var(--white);
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .value-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px 28px;
+      border-left: 4px solid var(--green-mid);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+    .value-card h3 { font-size: 18px; color: var(--green-deep); margin-bottom: 10px; }
+    .value-card p { font-size: 14px; color: var(--text-mid); line-height: 1.9; }
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .member-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .member-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px var(--shadow-mid);
+    }
+    .member-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+    }
+    .member-card h4 { font-size: 15px; color: var(--green-deep); margin-bottom: 4px; }
+    .member-card .role { font-size: 12px; color: var(--green-mid); font-weight: 600; margin-bottom: 8px; }
+    .member-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+    .charter-box {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 48px;
+      border: 2px solid var(--green-pale);
+      position: relative;
+      overflow: hidden;
+    }
+    .charter-box::before {
+      content: '"';
+      position: absolute; top: -20px; left: 32px;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 200px; color: var(--green-pale);
+      line-height: 1; z-index: 0;
+    }
+    .charter-content { position: relative; z-index: 1; }
+    .charter-article { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .charter-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .charter-num { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--green-mid); margin-bottom: 8px; }
+    .charter-title { font-size: 20px; font-weight: 700; color: var(--green-deep); margin-bottom: 10px; }
+    .charter-text { font-size: 15px; color: var(--text-mid); line-height: 1.9; }
+    @media (max-width: 768px) {
+      .value-grid { grid-template-columns: 1fr; }
+      .member-grid { grid-template-columns: repeat(2, 1fr); }
+      .charter-box { padding: 28px; }
+    }
+    @media (max-width: 480px) {
+      .member-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-main">자연돌봄공동체</span>
+          <span class="nav-logo-sub">Nature Harmony Community</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html" class="active">소개</a></li>
+        <li><a href="community.html">공동체 모델</a></li>
+        <li><a href="programs.html">프로그램·사업</a></li>
+        <li><a href="join.html">참여하기</a></li>
+        <li><a href="news.html">소식</a></li>
+        <li><a href="contact.html" class="nav-cta">문의하기</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- 페이지 히어로 -->
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--green-pale)">소개</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(32px,5vw,52px);font-weight:700;margin-bottom:16px;">
+      자연돌봄공동체를 소개합니다
+    </h1>
+    <p style="font-size:18px;color:rgba(255,255,255,0.8);max-width:600px;line-height:1.9;">
+      인구소멸 위기를 기회로 바꾸는, 장년층이 만드는 새로운 대한민국의 모델입니다.
+    </p>
+  </div>
+</section>
+
+<!-- 비전과 미션 -->
+<section class="section" id="vision">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="fade-in">
+        <div class="section-label">비전과 미션</div>
+        <h2 class="section-title">인구소멸 지역을<br>활력 있는 지역사회로</h2>
+        <div class="divider"></div>
+        <p style="font-size:16px;color:var(--text-mid);line-height:1.9;margin-bottom:24px;">
+          자연돌봄공동체는 단순한 귀촌 공동체가 아닙니다. 55~65세 장년층이 가진 수십 년의 경험과 역량을 지역사회 돌봄 인프라로 전환하는, 대한민국 최초의 세대통합형 자립 공동체 모델입니다.
+        </p>
+        <p style="font-size:16px;color:var(--text-mid);line-height:1.9;margin-bottom:32px;">
+          우리는 수혜자가 아닌 기여자로서, 아이·노인·반려동물·자연이 서로를 돌보는 순환 생태계를 만듭니다. 지자체의 예산 부담을 최소화하면서도 지역에 새로운 활력을 불어넣는 공공-민간 협력의 새 모델입니다.
+        </p>
+        <div style="background:var(--green-pale);border-radius:12px;padding:24px;margin-bottom:32px;">
+          <div style="font-size:13px;font-weight:700;color:var(--green-mid);letter-spacing:2px;margin-bottom:8px;">사업 비전</div>
+          <div style="font-family:'Noto Serif KR',serif;font-size:18px;color:var(--green-deep);line-height:1.7;">
+            인구소멸 지역 → 국민 노후를 다양하게 설계하는<br>활력 있는 지역사회
+          </div>
+        </div>
+        <div style="display:flex;gap:32px;">
+          <div>
+            <div style="font-size:13px;color:var(--text-light);margin-bottom:4px;">법인 형태</div>
+            <div style="font-size:15px;font-weight:600;color:var(--green-deep)">사회적협동조합 → 공익재단법인</div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:var(--text-light);margin-bottom:4px;">파일럿 지역</div>
+            <div style="font-size:15px;font-weight:600;color:var(--green-deep)">강원도 평창군 (2026년 착수)</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in stagger-2">
+        <div style="background:linear-gradient(135deg,var(--green-pale),var(--earth-pale));border-radius:16px;padding:40px;height:100%;display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--green-mid);margin-bottom:8px;">핵심 슬로건</div>
+            <div style="font-family:'Noto Serif KR',serif;font-size:15px;color:var(--green-deep);line-height:2.2;">
+              노인이 아이를 품고<br>
+              아이가 노인을 살리며<br>
+              유기견이 모두를 잇고<br>
+              숲이 모두를 치유하는 마을
+            </div>
+          </div>
+          <hr style="border:none;border-top:1px solid var(--border);">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--earth-mid);margin-bottom:12px;">핵심 주체</div>
+            <div style="font-size:15px;color:var(--text-dark);line-height:1.9;">
+              <strong>55~65세 장년층(신중년)</strong><br>
+              <span style="font-size:14px;color:var(--text-mid);">사회적 사각지대를 지역사회 돌봄 자산으로 전환하는 핵심 운영 주체</span>
+            </div>
+          </div>
+          <hr style="border:none;border-top:1px solid var(--border);">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--earth-mid);margin-bottom:12px;">현재 준비 현황</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:14px;color:var(--text-mid);">✅ 조합원 50명+ 확보 완료</div>
+              <div style="font-size:14px;color:var(--text-mid);">✅ 폐교 리모델링 전문가 확보</div>
+              <div style="font-size:14px;color:var(--text-mid);">✅ 사회적기업 4개사 준비</div>
+              <div style="font-size:14px;color:var(--text-mid);">✅ 아동 그룹홈 운영 준비 완료</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 핵심 가치 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">핵심 가치</div>
+      <h2 class="section-title">우리가 추구하는 세 가지 가치</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-in stagger-1">
+        <div style="font-size:36px;margin-bottom:16px;">🔄</div>
+        <h3>순환 (Circulation)</h3>
+        <p>장년층이 기여하고, 노인이 돌봄받고, 아이가 성장하며, 자연이 회복됩니다. 수혜자와 제공자의 경계가 없는 순환 생태계를 만듭니다. 잉여금은 배당 없이 공동체에 재투자됩니다.</p>
+      </div>
+      <div class="value-card fade-in stagger-2">
+        <div style="font-size:36px;margin-bottom:16px;">🏗️</div>
+        <h3>자립 (Self-Reliance)</h3>
+        <p>스마트팜·태양광으로 에너지와 식재료를 자급하고, 자체 수익으로 운영됩니다. 지자체 보조금 의존도를 최소화하여 지속 가능한 구조를 설계합니다.</p>
+      </div>
+      <div class="value-card fade-in stagger-3">
+        <div style="font-size:36px;margin-bottom:16px;">🤝</div>
+        <h3>존엄 (Dignity)</h3>
+        <p>노년을 요양원이 아닌 익숙한 공동체 안에서 마무리합니다. 모든 구성원이 역할을 가지며, 누구도 짐이 되지 않는 구조를 지향합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 창립 조합원 -->
+<section class="section" id="members">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">창립 조합원</div>
+      <h2 class="section-title">30~40년 전문가들이 뭉쳤습니다</h2>
+      <div class="divider divider-center"></div>
+      <p class="section-subtitle">
+        금융·건축·목수·간호·교육·인테리어·개훈련사·요리사 등 각 분야 전문가들이
+        <strong style="color:var(--green-deep)">핵심세대(55~64세)</strong>로서 공동체의 핵심 운영 주체로 직접 참여합니다.
+      </p>
+    </div>
+    <div class="member-grid">
+      <div class="member-card fade-in stagger-1">
+        <div class="member-avatar">💼</div>
+        <h4>이상석</h4>
+        <div class="role">설립준비위원장 · 금융·벤처투자</div>
+        <p>이사장 역할, 재무·정책자금 레버리지·대관 협상 총괄</p>
+      </div>
+      <div class="member-card fade-in stagger-2">
+        <div class="member-avatar">🏗️</div>
+        <h4>건축 전문가</h4>
+        <div class="role">시설조성 총괄 · 친환경건축 대표</div>
+        <p>폐교 리모델링 실적 보유, 착공 총괄 및 친환경건축 사회적기업 운영</p>
+      </div>
+      <div class="member-card fade-in stagger-3">
+        <div class="member-avatar">🪵</div>
+        <h4>목수 전문가</h4>
+        <div class="role">공사관리 · 가구공방 운영</div>
+        <p>현장 공사 관리·원가 절감, 가구공방 사회적기업 운영</p>
+      </div>
+      <div class="member-card fade-in stagger-4">
+        <div class="member-avatar">🐕</div>
+        <h4>개훈련사</h4>
+        <div class="role">반려동물센터 대표</div>
+        <p>유기견 훈련·치유 전문가, 반려동물센터 사회적기업 대표</p>
+      </div>
+      <div class="member-card fade-in stagger-1">
+        <div class="member-avatar">📚</div>
+        <h4>교육 전문가</h4>
+        <div class="role">아동교육 · 청년 멘토</div>
+        <p>그룹홈 아동 교육·학습 지도, 청년 멘토링 프로그램 운영</p>
+      </div>
+      <div class="member-card fade-in stagger-2">
+        <div class="member-avatar">🏥</div>
+        <h4>간호사</h4>
+        <div class="role">의무실 총괄 · 통합돌봄</div>
+        <p>의무실·노인·아동 건강 관리, 통합돌봄 체계 총괄 책임</p>
+      </div>
+      <div class="member-card fade-in stagger-3">
+        <div class="member-avatar">🏠</div>
+        <h4>인테리어 전문가</h4>
+        <div class="role">공간설계 · 배리어프리</div>
+        <p>배리어프리 공간 설계, 아동 안전 공간 시공 및 유니버설 디자인 적용</p>
+      </div>
+      <div class="member-card fade-in stagger-4">
+        <div class="member-avatar">🍞</div>
+        <h4>제빵·요리사</h4>
+        <div class="role">식생활 담당 · 발효식품</div>
+        <p>텃밭·발효 생산 연계, 공동체 식생활 운영 및 가공식품 생산</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--text-light);">
+      + 청년 조합원 4명 (스마트팜·신재생에너지 창업팀), 돌봄 노인 5명, 대기 조합원 다수
+    </p>
+  </div>
+</section>
+
+<!-- 비전 선언문 / 헌장 -->
+<section class="section section-alt" id="charter">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">비전 선언문</div>
+      <h2 class="section-title">자연돌봄공동체 헌장</h2>
+      <div class="divider divider-center"></div>
+    </div>
+    <div class="charter-box fade-in" style="margin-top:0;">
+      <div class="charter-content">
+        <div class="charter-article">
+          <div class="charter-num">제 1 조</div>
+          <div class="charter-title">우리는 기여자입니다</div>
+          <div class="charter-text">자연돌봄공동체의 모든 구성원은 수혜자가 아닌 기여자입니다. 55~65세 장년층의 경험과 역량, 청년의 기술, 노인의 지혜, 아이의 생기가 서로를 풍요롭게 합니다.</div>
+        </div>
+        <div class="charter-article">
+          <div class="charter-num">제 2 조</div>
+          <div class="charter-title">우리는 순환합니다</div>
+          <div class="charter-text">잉여금은 배당하지 않습니다. 모든 수익은 공동체의 지속가능성을 위해 재투자됩니다. 돌봄코인으로 적립된 기여는 노년에 돌봄으로 돌아옵니다.</div>
+        </div>
+        <div class="charter-article">
+          <div class="charter-num">제 3 조</div>
+          <div class="charter-title">우리는 자립합니다</div>
+          <div class="charter-text">스마트팜과 태양광으로 먹거리와 에너지를 자급합니다. 외부 지원에 의존하지 않고 자체 수익으로 운영되는 지속 가능한 공동체를 지향합니다.</div>
+        </div>
+        <div class="charter-article">
+          <div class="charter-num">제 4 조</div>
+          <div class="charter-title">우리는 함께 늙어갑니다</div>
+          <div class="charter-text">요양원이 아닌 익숙한 공동체 안에서 임종을 맞이합니다. 모든 구성원은 나이에 관계없이 역할을 가지며, 존엄하게 삶을 마무리할 권리가 있습니다.</div>
+        </div>
+        <div class="charter-article">
+          <div class="charter-num">제 5 조</div>
+          <div class="charter-title">우리는 지역과 함께합니다</div>
+          <div class="charter-text">인구소멸 위기의 지역에 활력을 불어넣습니다. 폐교를 삶의 터전으로, 유휴지를 생산의 공간으로, 산림을 치유의 장소로 바꿉니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 거버넌스 -->
+<section class="section" id="governance">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">거버넌스 구조</div>
+      <h2 class="section-title">사회적협동조합 × 사회적기업</h2>
+      <div class="divider divider-center"></div>
+      <p class="section-subtitle">
+        사회적협동조합이 공동체 전체를 소유·운영하는 모법인이며,
+        산하에 4개 사회적기업을 단계적으로 자회사화합니다.
+      </p>
+    </div>
+    <div style="margin-top:48px;background:var(--earth-pale);border-radius:16px;padding:40px;" class="fade-in">
+      <div style="text-align:center;margin-bottom:36px;">
+        <div style="display:inline-block;background:var(--green-deep);color:white;padding:16px 32px;border-radius:8px;font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;">
+          【 모법인 】<br>자연돌봄공동체 사회적협동조합
+        </div>
+        <div style="font-size:13px;color:var(--text-mid);margin-top:10px;">조합원 소유 · 이사회 의결 · 공동체 전체 운영 총괄</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="governance-sub">
+        <div style="background:white;border-radius:10px;padding:20px;text-align:center;border-top:3px solid #7aab8a;">
+          <div style="font-size:28px;margin-bottom:10px;">🌱</div>
+          <div style="font-size:14px;font-weight:700;color:var(--green-deep);margin-bottom:6px;">스마트팜</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">청년 대표 운영<br>농산물·허브 생산</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:20px;text-align:center;border-top:3px solid #c4a882;">
+          <div style="font-size:28px;margin-bottom:10px;">🐕</div>
+          <div style="font-size:14px;font-weight:700;color:var(--green-deep);margin-bottom:6px;">반려동물센터</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">개훈련사 조합원<br>유기견 훈련·입양</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:20px;text-align:center;border-top:3px solid #8b6f4e;">
+          <div style="font-size:28px;margin-bottom:10px;">🪵</div>
+          <div style="font-size:14px;font-weight:700;color:var(--green-deep);margin-bottom:6px;">가구공방</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">목수 조합원 운영<br>장애청년 직업훈련</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:20px;text-align:center;border-top:3px solid #4a7c5e;">
+          <div style="font-size:28px;margin-bottom:10px;">🏗️</div>
+          <div style="font-size:14px;font-weight:700;color:var(--green-deep);margin-bottom:6px;">친환경건축</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">건축 조합원 운영<br>폐교 리모델링</div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 640px) {
+        .governance-sub { grid-template-columns: repeat(2, 1fr) !important; }
+      }
+    </style>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">🌿 자연돌봄공동체</div>
+        <p class="footer-desc">세대통합형 자연돌봄공동체 사회적협동조합<br>Nature Harmony Community<br><br>대표 설립준비위원장: 이상석<br>☎ 010-2521-2030 &nbsp;|&nbsp; ✉ ssleents0922@gmail.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>공동체 안내</h4>
+        <ul>
+          <li><a href="about.html#vision">비전과 미션</a></li>
+          <li><a href="about.html#members">창립 조합원</a></li>
+          <li><a href="about.html#charter">비전 선언문</a></li>
+          <li><a href="about.html#governance">거버넌스</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>사업·프로그램</h4>
+        <ul>
+          <li><a href="programs.html">6대 핵심 사업</a></li>
+          <li><a href="community.html">공동체 모델</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>참여·문의</h4>
+        <ul>
+          <li><a href="join.html">조합원 참여</a></li>
+          <li><a href="contact.html">문의하기</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 자연돌봄공동체 사회적협동조합 설립준비위원회.</span>
+      <span>파일럿 지역: 강원도 평창군</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+

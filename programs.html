@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로그램·사업 — 자연돌봄공동체</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="자연돌봄공동체">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #1a3a2a 0%, var(--green-deep) 100%);
+      padding: 140px 0 80px; color: var(--white);
+    }
+    .prog-section { padding: 80px 0; }
+    .prog-section:nth-child(even) { background: var(--earth-pale); }
+    .prog-header {
+      display: flex; gap: 24px; align-items: flex-start; margin-bottom: 40px;
+    }
+    .prog-icon-big {
+      width: 80px; height: 80px; border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; flex-shrink: 0;
+    }
+    .prog-icon-big.green  { background: linear-gradient(135deg, var(--green-pale), #b8d9c4); }
+    .prog-icon-big.earth  { background: linear-gradient(135deg, var(--earth-pale), #d4c0a6); }
+    .prog-icon-big.sun    { background: linear-gradient(135deg, #f8ecc8, #f0d890); }
+    .prog-icon-big.forest { background: linear-gradient(135deg, #d8e8d0, #b4ccaa); }
+    .prog-icon-big.warm   { background: linear-gradient(135deg, #f0e4d4, #e8cbb0); }
+    .prog-icon-big.blue   { background: linear-gradient(135deg, #d4e8f0, #aacfdf); }
+    .prog-meta { display: flex; flex-direction: column; gap: 4px; }
+    .prog-meta .tag { display: inline-block; background: var(--green-pale); color: var(--green-deep); padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; width: fit-content; margin-bottom: 4px; }
+    .prog-meta h2 { font-size: 32px; color: var(--green-deep); margin-bottom: 6px; }
+    .prog-meta p { font-size: 15px; color: var(--text-mid); line-height: 1.8; }
+    .prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .prog-detail { display: flex; flex-direction: column; gap: 20px; }
+    .detail-card { background: var(--white); border-radius: 10px; padding: 20px 24px; border-left: 4px solid var(--green-mid); }
+    .detail-card h4 { font-size: 14px; font-weight: 700; color: var(--green-deep); margin-bottom: 6px; }
+    .detail-card p { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+    .prog-visual {
+      border-radius: 16px; overflow: hidden;
+      background: linear-gradient(135deg, var(--green-pale), var(--earth-pale));
+      aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+      font-size: 80px; box-shadow: 0 12px 40px var(--shadow-mid);
+    }
+    .revenue-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-deep); color: white;
+      padding: 8px 20px; border-radius: 6px; font-size: 14px; font-weight: 600;
+      margin-top: 12px;
+    }
+    @media (max-width: 768px) {
+      .prog-grid { grid-template-columns: 1fr; }
+      .prog-header { flex-direction: column; }
+      .prog-meta h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-main">자연돌봄공동체</span>
+          <span class="nav-logo-sub">Nature Harmony Community</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="community.html">공동체 모델</a></li>
+        <li><a href="programs.html" class="active">프로그램·사업</a></li>
+        <li><a href="join.html">참여하기</a></li>
+        <li><a href="news.html">소식</a></li>
+        <li><a href="contact.html" class="nav-cta">문의하기</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--green-pale)">프로그램·사업</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(30px,5vw,50px);font-weight:700;margin-bottom:16px;">
+      6대 핵심 사업이<br>유기적으로 연결됩니다
+    </h1>
+    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.9;">
+      자립 수익을 창출하면서 동시에 돌봄 서비스를 제공하는 복합 순환 구조입니다.
+    </p>
+  </div>
+</section>
+
+<!-- 1. 스마트팜 -->
+<section class="prog-section" id="smartfarm">
+  <div class="container">
+    <div class="prog-header">
+      <div class="prog-icon-big green">🌱</div>
+      <div class="prog-meta">
+        <span class="tag">청년 사회적기업 · 자립 수익</span>
+        <h2>스마트팜</h2>
+        <p>청년 창업가가 이끄는 스마트팜으로 연중 유기농 채소를 생산합니다.<br>공동체 식재료 자급 + 외부 납품으로 이중 수익 구조를 갖춥니다.</p>
+        <span class="revenue-badge">💰 연간 수익 약 2.5억원</span>
+      </div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-detail">
+        <div class="detail-card">
+          <h4>🥬 주요 생산 품목</h4>
+          <p>잎채소(상추·시금치·케일), 토마토·파프리카, 허브류(바질·민트), 임산물(버섯·산채). 계절에 관계없이 연중 안정 생산.</p>
+        </div>
+        <div class="detail-card">
+          <h4>📦 판로 구조</h4>
+          <p>내부 공동체 식재료 70% 자급 → 외부 식당·마트 납품 30%. aT 농산물 도매 단가 기준 안정적 수익 확보.</p>
+        </div>
+        <div class="detail-card">
+          <h4>👨‍🌾 운영 주체</h4>
+          <p>20~27세 청년 조합원 4명이 스마트팜 사회적기업을 창업·운영. 장년층 조합원의 농업 경험과 결합하여 시너지 창출.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🎓 교육 프로그램</h4>
+          <p>도시 아동 생태 체험, 귀농 희망자 교육, 공동체 입주 희망자 사전 체험 프로그램 운영.</p>
+        </div>
+      </div>
+      <div class="prog-visual" style="background:linear-gradient(135deg,#c8e8c8,#90c890);">🌱</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 태양광 발전 -->
+<section class="prog-section" id="solar">
+  <div class="container">
+    <div class="prog-header">
+      <div class="prog-icon-big sun">☀️</div>
+      <div class="prog-meta">
+        <span class="tag">에너지 자립 · 고정 수익</span>
+        <h2>태양광 발전</h2>
+        <p>1MW 규모 태양광 발전소로 에너지를 완전 자립하고 잉여 전력을 판매합니다.<br>SMP·REC·전기료 절감의 3중 수익 구조입니다.</p>
+        <span class="revenue-badge">💰 연간 수익 약 3.6억원</span>
+      </div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-visual" style="background:linear-gradient(135deg,#f8ecc8,#f0c830);">☀️</div>
+      <div class="prog-detail">
+        <div class="detail-card">
+          <h4>⚡ 발전 규모</h4>
+          <p>1MW(Phase 1A: 300kW → 전체 1MW 단계적 확장). 평창 일사량 4.0kWh/kW·일 기준 연간 발전량 1,460MWh.</p>
+        </div>
+        <div class="detail-card">
+          <h4>💵 수익 구조 (3중)</h4>
+          <p>① SMP 판매: 연 1.75억 ② REC 인증서: 연 0.58억 ③ 전기료 절감(자가소비): 연 0.49억. 합계 약 2.8~3.6억(보수적 기준).</p>
+        </div>
+        <div class="detail-card">
+          <h4>🌡️ 에너지 자립 효과</h4>
+          <p>공동체 전체 전력 수요의 120% 이상 생산. 스마트팜 재배 에너지, 냉난방, 전기차 충전까지 완전 자립.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🌿 탄소크레딧</h4>
+          <p>연간 CO₂ 감축량 산정 후 탄소크레딧으로 발행. 기업 ESG 파트너에게 판매하여 추가 수익 창출.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 반려동물센터 -->
+<section class="prog-section" id="animals">
+  <div class="container">
+    <div class="prog-header">
+      <div class="prog-icon-big earth">🐕</div>
+      <div class="prog-meta">
+        <span class="tag">사회적기업 · 치유 프로그램</span>
+        <h2>반려동물센터</h2>
+        <p>개 훈련사 조합원이 운영하는 유기견 훈련·사회화·입양 전문 센터입니다.<br>사람과 동물이 함께 치유받는 공간을 만듭니다.</p>
+        <span class="revenue-badge">💰 연간 수익 약 1.2억원</span>
+      </div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-detail">
+        <div class="detail-card">
+          <h4>🐾 핵심 서비스</h4>
+          <p>유기견 구조·훈련·사회화·입양 연계. 산림치유 반려 동행 프로그램. 동물매개치료(AAT) 노인·아동 정서 케어.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🏥 위탁 돌봄</h4>
+          <p>도시민 반려견 위탁 훈련·돌봄 서비스. 자연 환경에서의 집중 훈련으로 차별화. 온라인 입소문 마케팅 전략.</p>
+        </div>
+        <div class="detail-card">
+          <h4>❤️ 공동체 통합 효과</h4>
+          <p>입주 노인·아동이 유기견 산책·먹이 주기 등 돌봄 활동 참여. 사회적 고립 예방, 정서 안정, 신체 활동 증진.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🎓 교육 프로그램</h4>
+          <p>반려동물 기초 교육, 훈련사 양성 과정, 아동 동물 교감 프로그램 운영.</p>
+        </div>
+      </div>
+      <div class="prog-visual" style="background:linear-gradient(135deg,#e8d8c8,#c8a880);">🐕</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 산림치유 -->
+<section class="prog-section" id="forest">
+  <div class="container">
+    <div class="prog-header">
+      <div class="prog-icon-big forest">🌲</div>
+      <div class="prog-meta">
+        <span class="tag">치유 프로그램 · 탄소크레딧</span>
+        <h2>산림치유</h2>
+        <p>인접 국·군 산림자원을 활용한 산림치유 프로그램입니다.<br>도시민 힐링, 아동 생태체험, 수목장 등 복합 산림 서비스를 운영합니다.</p>
+        <span class="revenue-badge">💰 연간 수익 약 0.8억원+</span>
+      </div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-visual" style="background:linear-gradient(135deg,#c0d8b0,#88b870);">🌲</div>
+      <div class="prog-detail">
+        <div class="detail-card">
+          <h4>🌿 산림치유 프로그램</h4>
+          <p>산림청 인가 산림치유지도사 동반 치유 숲길 걷기, 명상, 자연 교감 체험. 도시 직장인·시니어 대상 1박 2일 힐링 캠프.</p>
+        </div>
+        <div class="detail-card">
+          <h4>👶 아동 생태체험</h4>
+          <p>유치원·초등학교 연계 생태 체험 캠프. 곤충·식물 관찰, 숲속 요리, 천연 염색 등 오감 체험 프로그램.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🕊️ 수목장 예정지</h4>
+          <p>자연장(수목장) 조성으로 공동체 구성원의 임종 후 자연 귀환. 도시민 수목장 서비스로 안정적 부가 수익.</p>
+        </div>
+        <div class="detail-card">
+          <h4>♻️ 탄소크레딧</h4>
+          <p>산림 탄소 흡수량 측정·인증으로 탄소크레딧 발행. 기업 ESG 파트너십과 연계하여 추가 수익 창출.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 가구공방 -->
+<section class="prog-section">
+  <div class="container">
+    <div class="prog-header">
+      <div class="prog-icon-big warm">🪵</div>
+      <div class="prog-meta">
+        <span class="tag">사회적기업 · 장애인 직업훈련</span>
+        <h2>가구공방</h2>
+        <p>목수 조합원이 직접 운영하는 친환경 목공 공방입니다.<br>공동체 내부 가구 제작과 장애 청년 직업훈련을 동시에 실현합니다.</p>
+      </div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-detail">
+        <div class="detail-card">
+          <h4>🪑 생산 품목</h4>
+          <p>반려동물 가구(케이지·침대·놀이터), 공동체 내부 가구·인테리어 소품, 주문 제작 원목 가구. 친환경 자재 사용.</p>
+        </div>
+        <div class="detail-card">
+          <h4>♿ 장애 청년 직업훈련</h4>
+          <p>발달장애 청년 대상 목공 직업훈련 프로그램. 고용노동부 장애인 고용장려금 수령. 자립 일자리 창출.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🏫 마을학교 연계</h4>
+          <p>지역 아동 목공 체험 교실 운영. 공방 견학·체험 프로그램으로 지역사회 연계. 장인 정신 전수 교육.</p>
+        </div>
+      </div>
+      <div class="prog-visual" style="background:linear-gradient(135deg,#e8d4c0,#c8a070);">🪵</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 친환경건축 -->
+<section class="prog-section" id="construction">
+  <div class="container">
+    <div class="prog-header">
+      <div class="prog-icon-big blue">🏗️</div>
+      <div class="prog-meta">
+        <span class="tag">사회적기업 · 폐교 리모델링</span>
+        <h2>친환경건축</h2>
+        <p>건축 조합원이 직접 이끄는 폐교 리모델링·친환경 건축 전문 팀입니다.<br>배리어프리·패시브하우스 기준으로 에너지 효율을 극대화합니다.</p>
+      </div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-visual" style="background:linear-gradient(135deg,#c8d8e8,#90b0d0);">🏗️</div>
+      <div class="prog-detail">
+        <div class="detail-card">
+          <h4>🏚️ 폐교 리모델링</h4>
+          <p>춘천 폐교 리모델링 실적 보유 전문가 직접 참여. 기존 건물 최대 활용, 신축 최소화로 예산 절감. 공사비 25~30% 절감 효과.</p>
+        </div>
+        <div class="detail-card">
+          <h4>♿ 배리어프리 설계</h4>
+          <p>노인·장애인을 위한 유니버설 디자인 전면 적용. 단차 제거, 손잡이·경사로 설치, 넓은 복도·화장실 확보.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🌡️ 패시브하우스 기준</h4>
+          <p>단열·기밀·환기 시스템 최적화로 냉난방비 80% 절감. 태양광 시스템과 연계하여 에너지 제로 주택 구현.</p>
+        </div>
+        <div class="detail-card">
+          <h4>🏘️ 외부 수주</h4>
+          <p>전국 폐교 리모델링 수주 사업으로 외부 수익 창출. 지자체·학교법인 폐교 활용 컨설팅 서비스 제공.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 아동 그룹홈 -->
+<section class="prog-section" id="children">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-label">사회적 돌봄</div>
+      <h2 class="section-title">아동 그룹홈</h2>
+      <div class="divider divider-center"></div>
+      <p class="section-subtitle">
+        아동복지법 공동생활가정(그룹홈) 인가를 받아 최대 6명의 아이들을<br>자연 속에서 장년층 조합원과 함께 양육합니다.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;" class="fade-in children-grid">
+      <div style="background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">👨‍👩‍👧‍👦</div>
+        <h3 style="font-size:17px;color:var(--green-deep);margin-bottom:10px;">자연 속 가족 공동체</h3>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;">장년층 조합원이 부모 역할. 노인 조합원이 조부모 역할. 세대가 함께 아이를 키우는 전통적 마을 구조 복원.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">📚</div>
+        <h3 style="font-size:17px;color:var(--green-deep);margin-bottom:10px;">전인 교육</h3>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;">교육 전문가 조합원의 학습 지도. 스마트팜·가구공방·산림에서의 생태·직업 교육. 도시 아이들이 경험 못하는 자연 교육.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">🐕</div>
+        <h3 style="font-size:17px;color:var(--green-deep);margin-bottom:10px;">동물 교감 치유</h3>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;">반려동물센터와 연계한 동물매개치료. 유기견과의 교감으로 정서 안정, 책임감·공감 능력 발달.</p>
+      </div>
+    </div>
+    <style>@media(max-width:640px){.children-grid{grid-template-columns:1fr!important;}}</style>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">🌿 자연돌봄공동체</div>
+        <p class="footer-desc">세대통합형 자연돌봄공동체 사회적협동조합<br>Nature Harmony Community<br><br>☎ 010-2521-2030 &nbsp;|&nbsp; ✉ ssleents0922@gmail.com</p>
+      </div>
+      <div class="footer-col"><h4>공동체 안내</h4><ul><li><a href="about.html">소개</a></li><li><a href="community.html">공동체 모델</a></li></ul></div>
+      <div class="footer-col"><h4>사업·프로그램</h4><ul><li><a href="programs.html#smartfarm">스마트팜</a></li><li><a href="programs.html#solar">태양광</a></li><li><a href="programs.html#animals">반려동물</a></li><li><a href="programs.html#forest">산림치유</a></li></ul></div>
+      <div class="footer-col"><h4>참여·문의</h4><ul><li><a href="join.html">참여하기</a></li><li><a href="contact.html">문의</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 자연돌봄공동체 사회적협동조합 설립준비위원회.</span>
+      <span>파일럿 지역: 강원도 평창군</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+
