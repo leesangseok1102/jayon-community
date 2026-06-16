@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>파트너십 제안서 — 자연돌봄공동체</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2d5a3d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="자연돌봄공동체">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <style>
+    .page-hero { background: linear-gradient(135deg, #1a3a2a 0%, var(--green-deep) 100%); padding: 140px 0 80px; color: var(--white); }
+    .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 48px; }
+    .tab-btn { padding: 14px 32px; font-size: 15px; font-weight: 700; color: var(--text-mid); background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s; }
+    .tab-btn.active { color: var(--green-deep); border-bottom-color: var(--green-deep); }
+    .tab-btn:hover { color: var(--green-deep); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .proposal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    @media (max-width: 768px) { .proposal-grid { grid-template-columns: 1fr; } }
+    .proposal-card { background: var(--white); border-radius: 16px; border: 1px solid var(--border); overflow: hidden; transition: all 0.3s; }
+    .proposal-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px var(--shadow-mid); }
+    .proposal-card.pending { opacity: 0.65; }
+    .card-header { padding: 28px 28px 20px; display: flex; align-items: flex-start; gap: 16px; }
+    .card-icon { width: 56px; height: 56px; border-radius: 12px; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+    .card-icon.blue { background: #dbeafe; }
+    .card-icon.earth { background: var(--earth-pale); }
+    .card-meta { flex: 1; }
+    .card-category { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--green-mid); text-transform: uppercase; margin-bottom: 4px; }
+    .card-category.corp { color: #1d4ed8; }
+    .card-title { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
+    .card-sub { font-size: 13px; color: var(--text-mid); }
+    .card-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .status-active { background: #dcfce7; color: #166534; }
+    .status-review { background: #fef9c3; color: #854d0e; }
+    .status-pending { background: #f1f5f9; color: #64748b; }
+    .card-body { padding: 0 28px 28px; }
+    .card-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+    .info-row { display: flex; gap: 8px; margin-bottom: 10px; font-size: 14px; }
+    .info-label { color: var(--text-light); width: 80px; flex-shrink: 0; }
+    .info-value { color: var(--text-dark); font-weight: 600; line-height: 1.5; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .tag { padding: 4px 10px; background: var(--green-pale); color: var(--green-deep); border-radius: 6px; font-size: 12px; font-weight: 600; }
+    .tag.blue { background: #dbeafe; color: #1d4ed8; }
+    .add-card { background: linear-gradient(135deg, var(--green-pale), var(--earth-pale)); border: 2px dashed var(--green-mid); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 28px; text-align: center; border-radius: 16px; cursor: default; }
+    .add-card .add-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.5; }
+    .add-card p { color: var(--text-mid); font-size: 14px; line-height: 1.7; }
+    .section-intro { background: var(--green-pale); border-radius: 12px; padding: 24px 28px; margin-bottom: 36px; font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+    .section-intro strong { color: var(--green-deep); }
+    .give-take { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    @media (max-width: 640px) { .give-take { grid-template-columns: 1fr; } }
+    .give-box { background: #f0fdf4; border-radius: 8px; padding: 12px 14px; }
+    .take-box { background: #eff6ff; border-radius: 8px; padding: 12px 14px; }
+    .box-label { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .give-box .box-label { color: #166534; }
+    .take-box .box-label { color: #1d4ed8; }
+    .box-items { font-size: 13px; color: var(--text-dark); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-main">자연돌봄공동체</span>
+          <span class="nav-logo-sub">Nature Harmony Community</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="community.html">공동체 모델</a></li>
+        <li><a href="programs.html">프로그램·사업</a></li>
+        <li><a href="join.html">참여하기</a></li>
+        <li><a href="news.html">소식</a></li>
+        <li><a href="proposals.html" class="active">파트너십</a></li>
+        <li><a href="contact.html" class="nav-cta">문의하기</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--green-pale)">파트너십</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(28px,5vw,48px);font-weight:700;margin-bottom:16px;">지자체 & 기업 파트너십 제안</h1>
+    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:620px;line-height:1.9;">
+      자연돌봄공동체는 복수의 지자체, 기업과 협력을 추진하고 있습니다.<br>
+      부지 확정 지역에서 가장 먼저 착공하며, 파트너십은 계속 확대됩니다.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="local">🏛️ 지자체 제안서</button>
+      <button class="tab-btn" data-tab="corporate">🏢 기업 ESG 제안서</button>
+    </div>
+
+    <!-- 지자체 제안서 탭 -->
+    <div class="tab-content active" id="tab-local">
+      <div class="section-intro">
+        <strong>현재 경기도(포천시·가평군·양평군), 충북(괴산군)</strong> 등 복수의 지자체와 폐교 부지 활용을 협의 중입니다.
+        부지가 확정되는 지역부터 즉시 착공하며, 협의가 진행될수록 제안서가 추가됩니다.
+        각 지자체 제안서는 해당 지역의 특성과 정책에 맞춰 별도로 작성되어 있습니다.
+      </div>
+
+      <div class="proposal-grid">
+
+        <!-- 포천시 -->
+        <div class="proposal-card">
+          <div class="card-header">
+            <div class="card-icon">🏔️</div>
+            <div class="card-meta">
+              <div class="card-category">지자체 제안서 · 경기도</div>
+              <div class="card-title">포천시</div>
+              <div class="card-sub">삼정초 (신북면) · 부지 35,459㎡</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-divider"></div>
+            <div class="info-row"><span class="info-label">협의 대상</span><span class="info-value">포천교육지원청, 포천시청 인구성장국</span></div>
+            <div class="info-row"><span class="info-label">거점 부지</span><span class="info-value">삼정초 (2026.3 폐교, 미활용·대부 협의 중)</span></div>
+            <div class="info-row"><span class="info-label">배후 자원</span><span class="info-value">인근 국공유림·군 유휴지 (산림치유·스마트팜)</span></div>
+            <div class="info-row"><span class="info-label">정책 연계</span><span class="info-value">에듀케어 플랫폼, 지방소멸대응기금 (2년 우수)</span></div>
+            <div class="give-take">
+              <div class="give-box">
+                <div class="box-label">▶ 우리가 드리는 것 (GIVE)</div>
+                <div class="box-items">초기 20명 즉시 전입·정주<br>법인 관내 등록 세원<br>연 2,000명 관계인구 유치<br>기금 3년 연속 우수 명분</div>
+              </div>
+              <div class="take-box">
+                <div class="box-label">▶ 요청 사항 (TAKE)</div>
+                <div class="box-items">삼정초 20년 장기 대부<br>기금 연계·원스톱 인허가<br>아동 그룹홈 설치 인가<br>인근 산림·군 유휴지 활용</div>
+              </div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">폐교 리모델링</span>
+              <span class="tag">세대통합</span>
+              <span class="tag">스마트팜</span>
+              <span class="tag">산림치유</span>
+              <span class="tag">지방소멸대응기금</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 괴산군 -->
+        <div class="proposal-card">
+          <div class="card-header">
+            <div class="card-icon">🌾</div>
+            <div class="card-meta">
+              <div class="card-category">지자체 제안서 · 충청북도</div>
+              <div class="card-title">괴산군</div>
+              <div class="card-sub">청천초 신월분교장 · 충북 괴산군 청천면</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-divider"></div>
+            <div class="info-row"><span class="info-label">협의 대상</span><span class="info-value">괴산증평교육지원청, 괴산군청 미래전략과</span></div>
+            <div class="info-row"><span class="info-label">거점 부지</span><span class="info-value">청천초 신월분교장 (충북 괴산군 청천면 신월리 315)</span></div>
+            <div class="info-row"><span class="info-label">배후 자원</span><span class="info-value">인근 국군유지 산림 (치유의 숲·스마트팜 기지)</span></div>
+            <div class="info-row"><span class="info-label">특이 사항</span><span class="info-value">국군유지 산림 활용 → 산림청·국방부 협의 병행</span></div>
+            <div class="give-take">
+              <div class="give-box">
+                <div class="box-label">▶ 우리가 드리는 것 (GIVE)</div>
+                <div class="box-items">초기 20명 즉시 전입·정주<br>법인 관내 등록 세원<br>연 2,000명 관계인구 유치<br>지방소멸기금 최우수 실증</div>
+              </div>
+              <div class="take-box">
+                <div class="box-label">▶ 요청 사항 (TAKE)</div>
+                <div class="box-items">신월분교장 20년 장기 대부<br>기금 연계·원스톱 인허가<br>아동 그룹홈 설치 인가<br>국군유지 치유의 숲 지정</div>
+              </div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">폐교 리모델링</span>
+              <span class="tag">세대통합</span>
+              <span class="tag">스마트팜</span>
+              <span class="tag">국군유지 산림</span>
+              <span class="tag">지방소멸대응기금</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 가평군 -->
+        <div class="proposal-card">
+          <div class="card-header">
+            <div class="card-icon">🏕️</div>
+            <div class="card-meta">
+              <div class="card-category">지자체 제안서 · 경기도</div>
+              <div class="card-title">가평군</div>
+              <div class="card-sub">명지분교장 (북면) · 부지 7,038㎡</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-divider"></div>
+            <div class="info-row"><span class="info-label">협의 대상</span><span class="info-value">가평교육지원청, 가평군청 인구정책 부서</span></div>
+            <div class="info-row"><span class="info-label">거점 부지</span><span class="info-value">명지분교장 (가평군 북면 적목리 160-1, 2026.3 폐교)</span></div>
+            <div class="info-row"><span class="info-label">배후 자원</span><span class="info-value">연인산·명지산 도립공원 산림 (3축 치유·관광)</span></div>
+            <div class="info-row"><span class="info-label">정책 연계</span><span class="info-value">귀농귀촌 종합지원센터, 가평 한달살기</span></div>
+            <div class="give-take">
+              <div class="give-box">
+                <div class="box-label">▶ 우리가 드리는 것 (GIVE)</div>
+                <div class="box-items">초기 20명 즉시 전입·정주<br>도립공원 관광 시너지<br>법인 관내 등록 세원<br>인구감소지역 기금 실증</div>
+              </div>
+              <div class="take-box">
+                <div class="box-label">▶ 요청 사항 (TAKE)</div>
+                <div class="box-items">명지분교장 20년 장기 대부<br>기금 연계·원스톱 인허가<br>아동 그룹홈 설치 인가<br>도립공원 치유 숲길 협조</div>
+              </div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">폐교 리모델링</span>
+              <span class="tag">도립공원 연계</span>
+              <span class="tag">에코 관광</span>
+              <span class="tag">귀농귀촌</span>
+              <span class="tag">지방소멸대응기금</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 양평군 (협의 중) -->
+        <div class="proposal-card pending">
+          <div class="card-header">
+            <div class="card-icon">🌿</div>
+            <div class="card-meta">
+              <div class="card-category">지자체 제안서 · 경기도</div>
+              <div class="card-title">양평군</div>
+              <div class="card-sub">부지 선정 협의 진행 중</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-divider"></div>
+            <div class="info-row"><span class="info-label">협의 상태</span><span class="info-value">초기 협의 단계 — 부지 후보 검토 중</span></div>
+            <div class="info-row"><span class="info-label">배후 자원</span><span class="info-value">남한강 수변·산림 자원 풍부 (치유 적합)</span></div>
+            <div class="info-row"><span class="info-label">특이 사항</span><span class="info-value">제안서 작성 후 협의 예정</span></div>
+            <div class="tag-list">
+              <span class="tag">협의 진행 중</span>
+              <span class="tag">부지 검토 중</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 추가 예정 -->
+        <div class="add-card" style="grid-column: span 1;">
+          <div class="add-icon">＋</div>
+          <p><strong style="color:var(--green-deep)">협의 지자체 추가 예정</strong><br>새로운 지자체와 협의가 시작되면<br>이 자리에 제안서가 추가됩니다.</p>
+        </div>
+
+      </div>
+    </div><!-- /tab-local -->
+
+    <!-- 기업 ESG 제안서 탭 -->
+    <div class="tab-content" id="tab-corporate">
+      <div class="section-intro">
+        자연돌봄공동체의 <strong>아동·노인·장애인·유기견·자연</strong>이 함께하는 생태계는 기업 ESG 전략과 정확히 맞물립니다.
+        임팩트투자, CSR 후원, REC 구매, 사회적 구매 등 다양한 형태의 파트너십을 제안합니다.
+      </div>
+
+      <div class="proposal-grid">
+
+        <!-- 키움증권그룹 -->
+        <div class="proposal-card">
+          <div class="card-header">
+            <div class="card-icon blue">🏦</div>
+            <div class="card-meta">
+              <div class="card-category corp">기업 ESG 제안서 · 금융</div>
+              <div class="card-title">키움증권그룹</div>
+              <div class="card-sub">임팩트투자 · CSR · REC 구매 · 스마트팜 매입</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-divider"></div>
+            <div class="info-row"><span class="info-label">수신처</span><span class="info-value">ESG위원회·ESG추진팀, 예강희망키움재단</span></div>
+            <div class="info-row"><span class="info-label">핵심 정합</span><span class="info-value">'키움과나눔' (청소년·장애인·저소득층) 목적사업과 1:1 연결</span></div>
+            <div class="info-row"><span class="info-label">연계 효과</span><span class="info-value">S: 청소년·장애인 자립 / G: 투명 거버넌스 / E: 탄소중립</span></div>
+            <div style="margin-top:16px;">
+              <div style="font-size:12px;font-weight:700;color:var(--text-mid);margin-bottom:8px;">파트너십 유형 (키움 우선순위순)</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:700;font-size:11px;">★★★</span><span>① 임팩트투자 — 사협 출자, 사회적 가치 환원</span></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:700;font-size:11px;">★★★</span><span>② CSR 후원금 — 시설 명명권 + 세액공제</span></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-weight:700;font-size:11px;">★★</span><span>③ REC 장기 구매 — 탄소중립·RE100 보고</span></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-weight:700;font-size:11px;">★★</span><span>④ 스마트팜 매입 — 임직원 복지·사회적 구매</span></div>
+              </div>
+            </div>
+            <div class="tag-list">
+              <span class="tag blue">임팩트투자</span>
+              <span class="tag blue">키움과나눔</span>
+              <span class="tag blue">ESG 보고서</span>
+              <span class="tag blue">탄소중립</span>
+              <span class="tag blue">SDGs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 추가 예정 기업 1 -->
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <p><strong style="color:#1d4ed8">협의 기업 추가 예정</strong><br>새로운 기업과 ESG 파트너십 협의가<br>시작되면 이 자리에 추가됩니다.</p>
+        </div>
+
+        <!-- 추가 예정 기업 2 -->
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <p><strong style="color:#1d4ed8">협의 기업 추가 예정</strong><br>임팩트투자·CSR·REC 구매 등<br>다양한 형태의 제안을 준비 중입니다.</p>
+        </div>
+
+      </div>
+
+      <!-- ESG 성과 지표 -->
+      <div style="margin-top:56px;">
+        <div class="text-center" style="margin-bottom:32px;">
+          <div class="section-label">ESG 성과 지표</div>
+          <h2 class="section-title">보고서에 바로 쓰는 수치</h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">👥</div>
+            <div style="font-size:22px;font-weight:800;color:var(--green-deep);margin-bottom:4px;">S · Social</div>
+            <div style="font-size:13px;color:var(--text-mid);line-height:1.7;">청소년·아동 성장<br>장애인 자립 일자리<br>노인 고독사 예방<br>유기견 안락사 감소</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">🏛️</div>
+            <div style="font-size:22px;font-weight:800;color:var(--green-deep);margin-bottom:4px;">G · Governance</div>
+            <div style="font-size:13px;color:var(--text-mid);line-height:1.7;">1인 1표 민주 운영<br>재무 전면 공개<br>임팩트 포트폴리오<br>거버넌스 리스크 통제</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;">
+            <div style="font-size:32px;margin-bottom:8px;">🌱</div>
+            <div style="font-size:22px;font-weight:800;color:var(--green-deep);margin-bottom:4px;">E · Environment</div>
+            <div style="font-size:13px;color:var(--text-mid);line-height:1.7;">태양광 REC 발전<br>탄소중립 주거 실증<br>유기농 스마트팜<br>산림 생태 복원</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:16px 20px;background:var(--earth-pale);border-radius:8px;font-size:13px;color:var(--text-mid);text-align:center;line-height:1.7;">
+          SDGs 연계 — <strong style="color:var(--text-dark)">3</strong>(건강) · <strong style="color:var(--text-dark)">8</strong>(일자리) · <strong style="color:var(--text-dark)">11</strong>(지속가능도시) · <strong style="color:var(--text-dark)">15</strong>(육상생태) | 세부 지표·수치는 규모 확정 후 확인 가능
+        </div>
+      </div>
+    </div><!-- /tab-corporate -->
+
+    <!-- CTA -->
+    <div style="margin-top:64px;text-align:center;padding:48px 40px;background:linear-gradient(135deg,var(--green-pale),var(--earth-pale));border-radius:20px;">
+      <div style="font-size:36px;margin-bottom:16px;">🤝</div>
+      <h3 style="font-size:22px;color:var(--green-deep);margin-bottom:12px;">파트너십 문의</h3>
+      <p style="font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.8;">
+        지자체 담당자, 기업 ESG·사회공헌 담당자 모두 환영합니다.<br>
+        맞춤형 제안서를 별도로 준비해 드립니다.
+      </p>
+      <a href="contact.html" class="btn btn-primary">문의하기</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">🌿 자연돌봄공동체</div>
+        <p class="footer-desc">세대통합형 자연돌봄공동체 사회적협동조합<br>Nature Harmony Community<br><br>☎ 010-2521-2030 &nbsp;|&nbsp; ✉ ssleents0922@gmail.com</p>
+      </div>
+      <div class="footer-col"><h4>공동체 안내</h4><ul><li><a href="about.html">소개</a></li><li><a href="community.html">공동체 모델</a></li></ul></div>
+      <div class="footer-col"><h4>사업·프로그램</h4><ul><li><a href="programs.html">프로그램</a></li><li><a href="proposals.html">파트너십</a></li></ul></div>
+      <div class="footer-col"><h4>참여·문의</h4><ul><li><a href="join.html">참여하기</a></li><li><a href="contact.html">문의</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 자연돌봄공동체 사회적협동조합 설립준비위원회.</span></div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
