@@ -393,8 +393,8 @@ img { max-width: 100%; display: block; }
 /* ===== 비전 카드 ===== */
 .vision-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
   margin-top: 56px;
 }
 
@@ -924,7 +924,7 @@ footer {
 
 /* ===== 반응형 ===== */
 @media (max-width: 1024px) {
-  .vision-grid    { grid-template-columns: repeat(2, 1fr); }
+  .vision-grid    { grid-template-columns: repeat(3, 1fr); }
   .footer-grid    { grid-template-columns: 1fr 1fr; }
   .stats-grid     { grid-template-columns: repeat(2, 1fr); }
 }
