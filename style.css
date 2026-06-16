@@ -287,9 +287,8 @@ img { max-width: 100%; display: block; }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  max-width: 720px;
   width: 100%;
 }
 
