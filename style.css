@@ -275,14 +275,28 @@ img { max-width: 100%; display: block; }
 /* ===== 히어로 ===== */
 #hero {
   min-height: 100vh;
-  background:
-    linear-gradient(to bottom, rgba(20,45,28,0.65) 0%, rgba(20,45,28,0.4) 60%, rgba(20,45,28,0.7) 100%),
-    url('images/hero-bg.jpg') center 30%/cover no-repeat;
+  background: linear-gradient(160deg, #0e2a18 0%, #1a3a2a 40%, #2d5a3d 100%);
   display: flex;
   align-items: center;
   padding-top: 68px;
   position: relative;
   overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-illustration { display: flex; align-items: center; justify-content: center; }
+.hero-illustration svg { width: 100%; max-width: 520px; height: auto; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-illustration { display: none; }
 }
 
 #hero::after {
