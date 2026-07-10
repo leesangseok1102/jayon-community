@@ -1,15 +1,15 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ì†Œì‹ â€” ìžì—°ëŒë´„ê³µë™ì²´</title>
+  <title>¼Ò½Ä ? ÀÚ¿¬µ¹º½°øµ¿Ã¼</title>
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2d5a3d">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="ìžì—°ëŒë´„ê³µë™ì²´">
+  <meta name="apple-mobile-web-app-title" content="ÀÚ¿¬µ¹º½°øµ¿Ã¼">
   <link rel="apple-touch-icon" href="images/icon-192.png">
   <style>
     .page-hero { background: linear-gradient(135deg, #1a3a2a 0%, var(--green-deep) 100%); padding: 140px 0 80px; color: var(--white); }
@@ -39,21 +39,21 @@
   <div class="container">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <div class="nav-logo-icon">ðŸŒ¿</div>
+        <div class="nav-logo-icon">??</div>
         <div class="nav-logo-text">
-          <span class="nav-logo-main">ìžì—°ëŒë´„ê³µë™ì²´</span>
+          <span class="nav-logo-main">ÀÚ¿¬µ¹º½°øµ¿Ã¼</span>
           <span class="nav-logo-sub">Nature Harmony Community</span>
         </div>
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html">í™ˆ</a></li>
-        <li><a href="about.html">ì†Œê°œ</a></li>
-        <li><a href="community.html">ê³µë™ì²´ ëª¨ë¸</a></li>
-        <li><a href="programs.html">í”„ë¡œê·¸ëž¨Â·ì‚¬ì—…</a></li>
-        <li><a href="join.html">ì°¸ì—¬í•˜ê¸°</a></li>
-        <li><a href="news.html" class="active">ì†Œì‹</a></li>
-        <li><a href="proposals.html">íŒŒíŠ¸ë„ˆì‹­</a></li>
-        <li><a href="contact.html" class="nav-cta">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="index.html">È¨</a></li>
+        <li><a href="about.html">¼Ò°³</a></li>
+        <li><a href="community.html">°øµ¿Ã¼ ¸ðµ¨</a></li>
+        <li><a href="programs.html">ÇÁ·Î±×·¥¡¤»ç¾÷</a></li>
+        <li><a href="join.html">Âü¿©ÇÏ±â</a></li>
+        <li><a href="news.html" class="active">¼Ò½Ä</a></li>
+        <li><a href="proposals.html">ÆÄÆ®³Ê½Ê</a></li>
+        <li><a href="contact.html" class="nav-cta">¹®ÀÇÇÏ±â</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
     </div>
@@ -62,134 +62,204 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="section-label" style="color:var(--green-pale)">ì†Œì‹</div>
-    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(30px,5vw,50px);font-weight:700;margin-bottom:16px;">ê³µì§€ì‚¬í•­ &amp;<br>ìƒˆë¡œìš´ ì†Œì‹</h1>
-    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.9;">ìžì—°ëŒë´„ê³µë™ì²´ì˜ ìµœì‹  ì†Œì‹ì„ ì „í•´ë“œë¦½ë‹ˆë‹¤.</p>
+    <div class="section-label" style="color:var(--green-pale)">¼Ò½Ä</div>
+    <h1 style="font-family:'Noto Serif KR',serif;font-size:clamp(30px,5vw,50px);font-weight:700;margin-bottom:16px;">°øÁö»çÇ× &amp;<br>»õ·Î¿î ¼Ò½Ä</h1>
+    <p style="font-size:17px;color:rgba(255,255,255,0.8);max-width:580px;line-height:1.9;">ÀÚ¿¬µ¹º½°øµ¿Ã¼ÀÇ ÃÖ½Å ¼Ò½ÄÀ» ÀüÇØµå¸³´Ï´Ù.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="news-filter">
-      <button class="filter-btn active" data-cat="all">ì „ì²´</button>
-      <button class="filter-btn" data-cat="notice">ê³µì§€</button>
-      <button class="filter-btn" data-cat="news">ì†Œì‹</button>
-      <button class="filter-btn" data-cat="data">ìžë£Œ</button>
-      <button class="filter-btn" data-cat="media">ì–¸ë¡ </button>
+      <button class="filter-btn active" data-cat="all">ÀüÃ¼</button>
+      <button class="filter-btn" data-cat="notice">°øÁö</button>
+      <button class="filter-btn" data-cat="news">¼Ò½Ä</button>
+      <button class="filter-btn" data-cat="data">ÀÚ·á</button>
+      <button class="filter-btn" data-cat="media">¾ð·Ð</button>
     </div>
 
     <div class="news-grid" id="newsGrid">
-      <!-- ê³µì§€ 1 -->
+      <!-- °øÁö 1 -->
       <div class="news-card" data-cat="notice">
         <div class="news-card-header" style="background:linear-gradient(135deg,var(--green-pale),#b8d9c4);">
-          <span class="news-card-cat">ê³µì§€</span>
-          ðŸŒ¿
+          <span class="news-card-cat">°øÁö</span>
+          ??
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 06. 16</div>
-          <div class="news-card-title">ìžì—°ëŒë´„ê³µë™ì²´ ì‚¬íšŒì í˜‘ë™ì¡°í•© ì„¤ë¦½ ì¤€ë¹„ìœ„ì›íšŒ ê³µì‹ ì¶œë²”</div>
-          <div class="news-card-desc">ìžì—°ëŒë´„ê³µë™ì²´ ì‚¬íšŒì í˜‘ë™ì¡°í•© ì„¤ë¦½ ì¤€ë¹„ìœ„ì›íšŒê°€ ê³µì‹ ì¶œë²”í–ˆìŠµë‹ˆë‹¤. ì„¤ë¦½ì¤€ë¹„ìœ„ì›íšŒë¥¼ ì¤‘ì‹¬ìœ¼ë¡œ ìž¥ë…„Â·ì²­ë…„Â·ë…¸ì¸ ì¡°í•©ì› 50ëª… ì´ìƒì´ í•¨ê»˜í•˜ëŠ” ì„¤ë¦½ ì¤€ë¹„ì— ë°•ì°¨ë¥¼ ê°€í•˜ê³  ìžˆìŠµë‹ˆë‹¤.</div>
+          <div class="news-card-title">ÀÚ¿¬µ¹º½°øµ¿Ã¼ »çÈ¸ÀûÇùµ¿Á¶ÇÕ ¼³¸³ ÁØºñÀ§¿øÈ¸ °ø½Ä Ãâ¹ü</div>
+          <div class="news-card-desc">ÀÚ¿¬µ¹º½°øµ¿Ã¼ »çÈ¸ÀûÇùµ¿Á¶ÇÕ ¼³¸³ ÁØºñÀ§¿øÈ¸°¡ °ø½Ä Ãâ¹üÇß½À´Ï´Ù. ¼³¸³ÁØºñÀ§¿øÈ¸¸¦ Áß½ÉÀ¸·Î Àå³â¡¤Ã»³â¡¤³ëÀÎ Á¶ÇÕ¿ø 50¸í ÀÌ»óÀÌ ÇÔ²²ÇÏ´Â ¼³¸³ ÁØºñ¿¡ ¹ÚÂ÷¸¦ °¡ÇÏ°í ÀÖ½À´Ï´Ù.</div>
         </div>
       </div>
 
-      <!-- ì†Œì‹ â€” í™ì²œ í•µì‹¬ê±°ì  -->
+      <!-- ¼Ò½Ä ? È«Ãµ ÇÙ½É°ÅÁ¡ -->
       <div class="news-card" data-cat="news">
         <div class="news-card-header" style="background:linear-gradient(135deg,#b8d9c4,#7fb89a);">
-          <span class="news-card-cat">ì†Œì‹</span>
-          ðŸŒ²
+          <span class="news-card-cat">¼Ò½Ä</span>
+          ??
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 06. 20</div>
-          <div class="news-card-title">í™ì²œêµ° ë‚´ì´Œë©´ ë™ì°½ë¶„êµìž¥ â€” í•µì‹¬ ê±°ì ìœ¼ë¡œ ì§‘ì¤‘ ì¶”ì§„</div>
-          <div class="news-card-desc">ê°•ì›íŠ¹ë³„ìžì¹˜ë„ í™ì²œêµ° ë‚´ì´Œì´ˆ ë™ì°½ë¶„êµìž¥(44,029ãŽ¡, 2021ë…„ íêµ)ì„ íŒŒì¼ëŸ¿ í•µì‹¬ ê±°ì ìœ¼ë¡œ ì§‘ì¤‘ ì¶”ì§„í•©ë‹ˆë‹¤. í™ì²œêµìœ¡ì§€ì›ì²­Â·í™ì²œêµ°ì²­Â·í™ì²œêµ­ìœ ë¦¼ê´€ë¦¬ì†Œì™€ ì œì•ˆì„œ í˜‘ì˜ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤.</div>
+          <div class="news-card-title">È«Ãµ±º ³»ÃÌ¸é µ¿Ã¢ºÐ±³Àå ? ÇÙ½É °ÅÁ¡À¸·Î ÁýÁß ÃßÁø</div>
+          <div class="news-card-desc">°­¿øÆ¯º°ÀÚÄ¡µµ È«Ãµ±º ³»ÃÌÃÊ µ¿Ã¢ºÐ±³Àå(44,029§³, 2021³â Æó±³)À» ÆÄÀÏ·µ ÇÙ½É °ÅÁ¡À¸·Î ÁýÁß ÃßÁøÇÕ´Ï´Ù. È«Ãµ±³À°Áö¿øÃ»¡¤È«Ãµ±ºÃ»¡¤È«Ãµ±¹À¯¸²°ü¸®¼Ò¿Í Á¦¾È¼­ ÇùÀÇ ÁøÇà ÁßÀÔ´Ï´Ù.</div>
         </div>
       </div>
 
-      <!-- ì†Œì‹ 1 -->
+      <!-- ¼Ò½Ä 1 -->
       <div class="news-card" data-cat="news">
         <div class="news-card-header" style="background:linear-gradient(135deg,#d4e8f0,#aacfdf);">
-          <span class="news-card-cat">ì†Œì‹</span>
-          ðŸ”ï¸
+          <span class="news-card-cat">¼Ò½Ä</span>
+          ???
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 06. 01</div>
-          <div class="news-card-title">íŒŒì¼ëŸ¿ ë‹¨ì§€ ë¶€ì§€ í˜‘ì˜ ì§„í–‰ í˜„í™© ì—…ë°ì´íŠ¸</div>
-          <div class="news-card-desc">ê´´ì‚°êµ°Â·í¬ì²œì‹œÂ·ì–‘í‰êµ°Â·ê°€í‰êµ° ë“± ë³µìˆ˜ì˜ ì§€ìžì²´ì™€ íêµ ë¶€ì§€ í™œìš© í˜‘ì˜ê°€ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤. ë¶€ì§€ê°€ í™•ì •ë˜ëŠ” ì§€ì—­ì—ì„œ ê°€ìž¥ ë¨¼ì € ì°©ê³µí•©ë‹ˆë‹¤.</div>
+          <div class="news-card-title">ÆÄÀÏ·µ ´ÜÁö ºÎÁö ÇùÀÇ ÁøÇà ÇöÈ² ¾÷µ¥ÀÌÆ®</div>
+          <div class="news-card-desc">±«»ê±º¡¤Æ÷Ãµ½Ã¡¤¾çÆò±º¡¤°¡Æò±º µî º¹¼öÀÇ ÁöÀÚÃ¼¿Í Æó±³ ºÎÁö È°¿ë ÇùÀÇ°¡ ÁøÇà ÁßÀÔ´Ï´Ù. ºÎÁö°¡ È®Á¤µÇ´Â Áö¿ª¿¡¼­ °¡Àå ¸ÕÀú Âø°øÇÕ´Ï´Ù.</div>
         </div>
       </div>
 
-      <!-- ìžë£Œ 1 -->
+      <!-- ÀÚ·á 1 -->
       <div class="news-card" data-cat="data">
         <div class="news-card-header" style="background:linear-gradient(135deg,var(--earth-pale),#d4c0a6);">
-          <span class="news-card-cat">ìžë£Œ</span>
-          ðŸ“„
+          <span class="news-card-cat">ÀÚ·á</span>
+          ??
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 05. 15</div>
-          <div class="news-card-title">ì¢…í•© ë°±ì„œÂ·ì‚¬ì—…ê³„íšì„œ ê³µê°œ â€” ë¹„ì „Â·ìž¬ë¬´Â·ê±°ë²„ë„ŒìŠ¤ ì „ì²´ ìˆ˜ë¡</div>
-          <div class="news-card-desc">ìžì—°ëŒë´„ê³µë™ì²´ ì¢…í•© ë°±ì„œ ë° ì‚¬ì—…ê³„íšì„œê°€ ê³µê°œë˜ì—ˆìŠµë‹ˆë‹¤. ì² í•™Â·êµ¬ì¡°Â·5ëŒ€ ì‚¬íšŒì ê¸°ì—…Â·4ì¶• ìž¬ì›Â·ê±°ë²„ë„ŒìŠ¤ ì „ì²´ ë‚´ìš©ì´ ë‹´ê²¨ ìžˆìœ¼ë©° íŒŒíŠ¸ë„ˆì‹­ ì œì•ˆì„œ ìžë£Œì‹¤ì—ì„œ ë‹¤ìš´ë¡œë“œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</div>
+          <div class="news-card-title">Á¾ÇÕ ¹é¼­¡¤»ç¾÷°èÈ¹¼­ °ø°³ ? ºñÀü¡¤Àç¹«¡¤°Å¹ö³Í½º ÀüÃ¼ ¼ö·Ï</div>
+          <div class="news-card-desc">ÀÚ¿¬µ¹º½°øµ¿Ã¼ Á¾ÇÕ ¹é¼­ ¹× »ç¾÷°èÈ¹¼­°¡ °ø°³µÇ¾ú½À´Ï´Ù. Ã¶ÇÐ¡¤±¸Á¶¡¤5´ë »çÈ¸Àû±â¾÷¡¤4Ãà Àç¿ø¡¤°Å¹ö³Í½º ÀüÃ¼ ³»¿ëÀÌ ´ã°Ü ÀÖÀ¸¸ç ÆÄÆ®³Ê½Ê Á¦¾È¼­ ÀÚ·á½Ç¿¡¼­ ´Ù¿î·Îµå °¡´ÉÇÕ´Ï´Ù.</div>
         </div>
       </div>
 
-      <!-- ê³µì§€ 2 -->
+      <!-- °øÁö 2 -->
       <div class="news-card" data-cat="notice">
         <div class="news-card-header" style="background:linear-gradient(135deg,#d8e8d0,#b4ccaa);">
-          <span class="news-card-cat">ê³µì§€</span>
-          ðŸ™‹
+          <span class="news-card-cat">°øÁö</span>
+          ??
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 04. 01</div>
-          <div class="news-card-title">ì´ˆê¸° ìž¥ë…„ ì¡°í•©ì› ëª¨ì§‘ ì•ˆë‚´ â€” 50ëª… ëª©í‘œ</div>
-          <div class="news-card-desc">ìžì—°ëŒë´„ê³µë™ì²´ ì‚¬íšŒì í˜‘ë™ì¡°í•© ì„¤ë¦½ì„ ìœ„í•œ ì´ˆê¸° ìž¥ë…„ ì¡°í•©ì›(55~65ì„¸)ì„ ëª¨ì§‘í•©ë‹ˆë‹¤. ê¸ˆìœµÂ·ê±´ì¶•Â·ì˜ë£ŒÂ·êµìœ¡Â·ë†ì—… ë“± ë‹¤ì–‘í•œ ë¶„ì•¼ ì „ë¬¸ê°€ì˜ ì°¸ì—¬ë¥¼ í™˜ì˜í•©ë‹ˆë‹¤.</div>
+          <div class="news-card-title">ÃÊ±â Àå³â Á¶ÇÕ¿ø ¸ðÁý ¾È³» ? 50¸í ¸ñÇ¥</div>
+          <div class="news-card-desc">ÀÚ¿¬µ¹º½°øµ¿Ã¼ »çÈ¸ÀûÇùµ¿Á¶ÇÕ ¼³¸³À» À§ÇÑ ÃÊ±â Àå³â Á¶ÇÕ¿ø(55~65¼¼)À» ¸ðÁýÇÕ´Ï´Ù. ±ÝÀ¶¡¤°ÇÃà¡¤ÀÇ·á¡¤±³À°¡¤³ó¾÷ µî ´Ù¾çÇÑ ºÐ¾ß Àü¹®°¡ÀÇ Âü¿©¸¦ È¯¿µÇÕ´Ï´Ù.</div>
         </div>
       </div>
 
-      <!-- ì†Œì‹ 2 -->
+      <!-- ¼Ò½Ä 2 -->
       <div class="news-card" data-cat="news">
         <div class="news-card-header" style="background:linear-gradient(135deg,#f0e4d4,#e8cbb0);">
-          <span class="news-card-cat">ì†Œì‹</span>
-          ðŸ›ï¸
+          <span class="news-card-cat">¼Ò½Ä</span>
+          ???
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 03. 20</div>
-          <div class="news-card-title">ê´´ì‚°êµ°Â·í¬ì²œì‹œÂ·ê°€í‰êµ° ì§€ìžì²´ ì œì•ˆì„œ ì™„ì„± â€” í˜‘ì˜ ì§„í–‰ ì¤‘</div>
-          <div class="news-card-desc">ì¶©ë¶ ê´´ì‚°êµ°, ê²½ê¸° í¬ì²œì‹œ, ê²½ê¸° ê°€í‰êµ°ì— ìžì—°ëŒë´„ê³µë™ì²´ í˜‘ë ¥ ì œì•ˆì„œë¥¼ ìž‘ì„± ì™„ë£Œí•˜ê³  í˜‘ì˜ë¥¼ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤. ì–‘í‰êµ°ë„ ì´ˆê¸° í˜‘ì˜ ë‹¨ê³„ì— ìžˆìŠµë‹ˆë‹¤.</div>
+          <div class="news-card-title">±«»ê±º¡¤Æ÷Ãµ½Ã¡¤°¡Æò±º ÁöÀÚÃ¼ Á¦¾È¼­ ¿Ï¼º ? ÇùÀÇ ÁøÇà Áß</div>
+          <div class="news-card-desc">ÃæºÏ ±«»ê±º, °æ±â Æ÷Ãµ½Ã, °æ±â °¡Æò±º¿¡ ÀÚ¿¬µ¹º½°øµ¿Ã¼ Çù·Â Á¦¾È¼­¸¦ ÀÛ¼º ¿Ï·áÇÏ°í ÇùÀÇ¸¦ ÁøÇà ÁßÀÔ´Ï´Ù. ¾çÆò±ºµµ ÃÊ±â ÇùÀÇ ´Ü°è¿¡ ÀÖ½À´Ï´Ù.</div>
         </div>
       </div>
 
-      <!-- ìžë£Œ 2 -->
+      <!-- ÀÚ·á 2 -->
       <div class="news-card" data-cat="data">
         <div class="news-card-header" style="background:linear-gradient(135deg,#f8ecc8,#f0d890);">
-          <span class="news-card-cat">ìžë£Œ</span>
-          ðŸ“Š
+          <span class="news-card-cat">ÀÚ·á</span>
+          ??
         </div>
         <div class="news-card-body">
           <div class="news-card-date">2026. 02. 10</div>
-          <div class="news-card-title">ì‚¬íšŒì í˜‘ë™ì¡°í•© ì •ê´€ ì´ˆì•ˆ ê³µê°œ</div>
-          <div class="news-card-desc">ìžì—°ëŒë´„ê³µë™ì²´ ì‚¬íšŒì í˜‘ë™ì¡°í•© ì •ê´€ ì´ˆì•ˆì„ ê³µê°œí•©ë‹ˆë‹¤. 1ì¸ 1í‘œ ì›ì¹™, ìž‰ì—¬ê¸ˆ ë°°ë‹¹ ê¸ˆì§€, ëŒë´„ì½”ì¸ ì‹œìŠ¤í…œ ìš´ì˜ ë“± í•µì‹¬ ì›ì¹™ì´ ë‹´ê²¨ ìžˆìŠµë‹ˆë‹¤.</div>
+          <div class="news-card-title">»çÈ¸ÀûÇùµ¿Á¶ÇÕ Á¤°ü ÃÊ¾È °ø°³</div>
+          <div class="news-card-desc">ÀÚ¿¬µ¹º½°øµ¿Ã¼ »çÈ¸ÀûÇùµ¿Á¶ÇÕ Á¤°ü ÃÊ¾ÈÀ» °ø°³ÇÕ´Ï´Ù. 1ÀÎ 1Ç¥ ¿øÄ¢, À×¿©±Ý ¹è´ç ±ÝÁö, µ¹º½ÄÚÀÎ ½Ã½ºÅÛ ¿î¿µ µî ÇÙ½É ¿øÄ¢ÀÌ ´ã°Ü ÀÖ½À´Ï´Ù.</div>
         </div>
       </div>
     </div>
 
-    <!-- ì¶”ê°€ ì†Œì‹ ì•ˆë‚´ -->
+    <!-- Ãß°¡ ¼Ò½Ä ¾È³» -->
     <div style="margin-top:56px;text-align:center;padding:40px;background:var(--green-pale);border-radius:16px;">
-      <div style="font-size:32px;margin-bottom:12px;">ðŸ“¬</div>
-      <h3 style="font-size:20px;color:var(--green-deep);margin-bottom:10px;">ìƒˆë¡œìš´ ì†Œì‹ì„ ê°€ìž¥ ë¨¼ì € ë°›ì•„ë³´ì„¸ìš”</h3>
-      <p style="font-size:14px;color:var(--text-mid);margin-bottom:20px;">ì¡°í•©ì› ì„¤ëª…íšŒ, ë¶€ì§€ í™•ì • ì†Œì‹, ì°©ê³µ ì¼ì • ë“±ì„ ì´ë©”ì¼ë¡œ ì•ˆë‚´í•´ ë“œë¦½ë‹ˆë‹¤.</p>
-      <a href="contact.html" class="btn btn-primary">ì†Œì‹ ì‹ ì²­í•˜ê¸°</a>
+      <div style="font-size:32px;margin-bottom:12px;">??</div>
+      <h3 style="font-size:20px;color:var(--green-deep);margin-bottom:10px;">»õ·Î¿î ¼Ò½ÄÀ» °¡Àå ¸ÕÀú ¹Þ¾Æº¸¼¼¿ä</h3>
+      <p style="font-size:14px;color:var(--text-mid);margin-bottom:20px;">Á¶ÇÕ¿ø ¼³¸íÈ¸, ºÎÁö È®Á¤ ¼Ò½Ä, Âø°ø ÀÏÁ¤ µîÀ» ÀÌ¸ÞÀÏ·Î ¾È³»ÇØ µå¸³´Ï´Ù.</p>
+      <a href="contact.html" class="btn btn-primary">¼Ò½Ä ½ÅÃ»ÇÏ±â</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div><div class="footer-logo-main">ðŸŒ¿ ìžì—°ëŒë´„ê³µë™ì²´</div><p class="footer-desc">ì„¸ëŒ€í†µí•©í˜• ìžì—°ëŒë´„ê³µë™ì²´ ì‚¬íšŒì í˜‘ë™ì¡°í•©<br>Nature Harmony Community<br><br>â˜Ž 010-2521-2030 &nbsp;|&nbsp; âœ‰ ssleents0922@gmail.com</p></div>
-      <div class="footer-col"><h4>ê³µë™ì²´ ì•ˆë‚´</h4><ul><li><a href="about.html">ì†Œê°œ</a></li><li><a href="community.html">ê³µë™ì²´ ëª¨ë¸</a></li></ul></div>
-      <div class="footer-col"><h4>ì‚¬ì—…Â·í”„ë¡œê·¸ëž¨</h4><ul><li><a href="programs.html">í”„ë¡œê·¸ëž¨</a></li></ul></div>
-      <div class="footer-col"><h4>ì°¸ì—¬Â·ë¬¸ì˜</h4><ul><li><a href="join.html">ì°¸ì—¬í•˜ê¸°</a></li><li><a href="contact.html">ë¬¸ì˜</a></li></ul></div>
+    <div class="footer-main">
+      <div class="footer-section">
+        <h3>°øµ¿Ã¼ ¾È³»</h3>
+        <ul>
+          <li><a href="about.html">¼Ò°³ &amp; ºñÀü</a></li>
+          <li><a href="community.html">°øµ¿Ã¼ ¸ðµ¨</a></li>
+          <li><a href="about.html#governance">°Å¹ö³Í½º</a></li>
+          <li><a href="about.html#members">Ã¢¸³ Á¶ÇÕ¿ø</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>»ç¾÷¡¤ÇÁ·Î±×·¥</h3>
+        <ul>
+          <li><a href="programs.html">ÇÁ·Î±×·¥ º¸±â</a></li>
+          <li><a href="programs.html#smartfarm">½º¸¶Æ®ÆÊ</a></li>
+          <li><a href="programs.html#animals">¹Ý·Áµ¿¹°¼¾ÅÍ</a></li>
+          <li><a href="programs.html#forest">»ê¸²Ä¡À¯</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Âü¿©¡¤ÆÄÆ®³Ê½Ê</h3>
+        <ul>
+          <li><a href="join.html">Á¶ÇÕ¿ø Âü¿©</a></li>
+          <li><a href="join.html#local-gov">ÁöÀÚÃ¼ Çù·Â</a></li>
+          <li><a href="join.html#corporate">±â¾÷ ESG</a></li>
+          <li><a href="news.html">¼Ò½Ä &amp; ´º½º</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>¹®ÀÇ¡¤Á¤º¸</h3>
+        <ul>
+          <li><a href="contact.html">¹®ÀÇÇÏ±â</a></li>
+          <li><a href="proposals.html">Á¦¾È¼­ º¸±â</a></li>
+          <li><a href="contact.html#location">¿À½Ã´Â ±æ</a></li>
+          <li><a href="javascript:void(0);">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><span>Â© 2026 ìžì—°ëŒë´„ê³µë™ì²´ ì‚¬íšŒì í˜‘ë™ì¡°í•© ì„¤ë¦½ì¤€ë¹„ìœ„ì›íšŒ.</span></div>
+    
+    <div class="footer-about">
+      <div class="footer-about-text">
+        <strong>?? ÀÚ¿¬µ¹º½°øµ¿Ã¼</strong>
+        ¼¼´ëÅëÇÕÇü ÀÚ¿¬µ¹º½°øµ¿Ã¼ »çÈ¸ÀûÇùµ¿Á¶ÇÕ<br>
+        <em>Nature Harmony Community</em><br><br>
+        ³ëÀÎÀÌ ¾ÆÀÌ¸¦ Ç°°í, ¾ÆÀÌ°¡ ³ëÀÎÀ» »ì¸®¸ç,<br>
+        ¹Ý·Áµ¿¹°ÀÌ ¸ðµÎ¸¦ ÀÕ°í, ½£ÀÌ ¸ðµÎ¸¦ Ä¡À¯ÇÏ´Â ¸¶À»
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">??</span>
+          <span><strong>ÀüÈ­:</strong> 010-2521-2030</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">??</span>
+          <span><strong>ÀÌ¸ÞÀÏ:</strong> ssleents0922@gmail.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">??</span>
+          <span><strong>À§Ä¡:</strong> Àü±¹ ÆÄÀÏ·µ ´ÜÁö ÁØºñ Áß</span>
+        </div>
+        <div class="footer-social">
+          <a href="javascript:void(0);" class="footer-social-link" title="Facebook" aria-label="Facebook">f</a>
+          <a href="javascript:void(0);" class="footer-social-link" title="Instagram" aria-label="Instagram">??</a>
+          <a href="javascript:void(0);" class="footer-social-link" title="YouTube" aria-label="YouTube">¢º?</a>
+          <a href="javascript:void(0);" class="footer-social-link" title="Naver Blog" aria-label="Naver Blog">??</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>¨Ï 2026 ÀÚ¿¬µ¹º½°øµ¿Ã¼ »çÈ¸ÀûÇùµ¿Á¶ÇÕ ¼³¸³ÁØºñÀ§¿øÈ¸. All rights reserved.</div>
+      <nav class="footer-bottom-nav">
+        <a href="javascript:void(0);">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a>
+        <a href="javascript:void(0);">ÀÌ¿ë¾à°ü</a>
+        <a href="contact.html">¹®ÀÇÇÏ±â</a>
+      </nav>
+    </div>
   </div>
 </footer>
 
@@ -199,7 +269,7 @@
     if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
   document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('open'));
 
-  // í•„í„°
+  // ÇÊÅÍ
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -213,4 +283,5 @@
 </script>
 </body>
 </html>
+
 
